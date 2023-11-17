@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from "@/layouts/Layout.tsx";
 
 const Home = () => {
@@ -13,7 +12,7 @@ const Home = () => {
                 <section className={"flex flex-col items-center py-24"}>
                     <div className={"flex flex-col items-center gap-5 mb-12"}>
                         <div>
-                            <img src={"/patterns/sm_pattern.svg"} />
+                            <img src={"/patterns/sm_pattern.svg"}  alt={"background"}/>
                         </div>
                         <span className={"subtitle"}>
                             Our history
@@ -100,7 +99,7 @@ const Home = () => {
                     <div className={"flex "}>
                         <div className={"flex flex-col"}>
                             <div>
-                                <img src={"/products/HYDROFOILER_SL3.png"} />
+                                <img src={"/products/HYDROFOILER_SL3.png"}  alt={"HYDROFOILER SL3"}/>
                             </div>
                             <span className={"uppercase"}>
                                 Hydrofoiler sl3
@@ -111,7 +110,7 @@ const Home = () => {
                         </div>
                         <div className={"flex flex-col"}>
                             <div>
-                                <img src={"/products/HYDROFOILER_SL3_PRO.png"} />
+                                <img src={"/products/HYDROFOILER_SL3_PRO.png"}  alt={"HYDROFOILER SL3 PRO"}/>
                             </div>
                             <span className={"uppercase"}>
                                 Hydrofoiler sl3
