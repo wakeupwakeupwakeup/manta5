@@ -1,9 +1,9 @@
 import Header from "@/components/Header/Header.tsx";
 import Footer from "@/components/Footer/Footer.tsx";
-import React from "react";
+import { ReactElement } from "react";
 
 type Props = {
-    children: React.Component
+    children: ReactElement
 }
 const Layout = ({children}: Props) => {
     return (
