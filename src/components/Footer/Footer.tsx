@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className={"flex flex-col bg-gray-950 text-white px-40 py-14"}>
+        <div className={"flex flex-col bg-gray-950 text-white px-0 lg:px-40 py-14"}>
             <div className={"flex justify-between"}>
                 <div className={"flex justify-start"}>
                     <div className={"flex flex-col items-center gap-4"}>
@@ -17,7 +17,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"flex gap-24 text-white nav"}>
+                <div className={"hidden lg:flex gap-24 text-white nav"}>
                     <div>
                         <a className={"uppercase"} href={"#"}>Buy mantas</a>
                     </div>

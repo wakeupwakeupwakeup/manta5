@@ -19,13 +19,13 @@ const Home = () => {
     return (
         <Layout>
             <main>
-                <section className={"flex flex-col justify-end bg-main h-screen text-white text-center pb-16"}>
+                <section className={"flex flex-col justify-end bg-main bg-center bg-cover h-screen text-white text-center pb-16"}>
                     <div>
                         <a className={"uppercase bg-red-600 py-5 px-8"}>New sl3 features</a>
                     </div>
                 </section>
-                <section className={"flex flex-col items-center py-24"}>
-                    <div className={"flex flex-col items-center gap-5 mb-12"}>
+                <section className={"flex flex-col items-center px-4 py-24"}>
+                    <div className={"flex flex-col items-center text-center gap-5 mb-12"}>
                         <div>
                             <img src={"/patterns/sm_pattern.svg"}  alt={"background"}/>
                         </div>
@@ -57,16 +57,16 @@ const Home = () => {
                         </p>
                     </div>
                 </section>
-                <section className={"flex flex-col items-center bg-gray-950 text-white py-20"}>
-                    <div className={"flex flex-col items-center gap-5 mb-24"}>
+                <section className={"flex flex-col items-center bg-gray-950 text-white px-4 py-20"}>
+                    <div className={"flex flex-col items-center text-center gap-5 mb-24"}>
                         <span className={"subtitle"}>
                             Our advantages
                         </span>
                         <h2>What is the uniqueness?</h2>
                     </div>
-                    <div className={"grid grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
+                    <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                         <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
                                 Innovative
                             </span>
                             <p>
@@ -76,7 +76,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
                                 Fun
                             </span>
                             <p>
@@ -85,7 +85,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
                                 Zero Emissions
                             </span>
                             <p>
@@ -94,7 +94,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
                                 Quiet
                             </span>
                             <p>
@@ -104,15 +104,15 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                <section className={"flex flex-col items-center py-28"}>
-                    <div className={"flex flex-col items-center gap-5 mb-24"}>
+                <section className={"flex flex-col items-center px-4 py-28"}>
+                    <div className={"flex flex-col items-center text-center gap-5 mb-24"}>
                         <span className={"subtitle"}>
                             Your waterway
                         </span>
                         <h2>Buy Manta5</h2>
                     </div>
-                    <div className={"flex"}>
-                        <div className={"flex flex-col items-center"}>
+                    <div className={"flex flex-col gap-8 lg:flex-row"}>
+                        <div className={"flex flex-col gap-4 items-center"}>
                             <div>
                                 <img src={"/products/HYDROFOILER_SL3.png"}  alt={"HYDROFOILER SL3"}/>
                             </div>
@@ -136,7 +136,7 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                <section className={"flex justify-start bg-section text-white px-36 py-40"}>
+                <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white px-4 lg:px-36 py-40"}>
                     <div className={"flex flex-col gap-5 max-w-2xl"}>
                         <span className={"subtitle"}>
                             Test-Ride and trainings
@@ -156,7 +156,7 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                <section className={"overflow-x-hidden py-40"}>
+                <section className={"hidden overflow-x-hidden py-40"}>
                         <Slider {...sliderSettings}>
                                 <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
                                 <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>

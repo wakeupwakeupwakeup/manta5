@@ -2,11 +2,11 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <div className={"flex justify-between px-40 py-6 bg-gray-950"}>
+        <div className={"flex justify-between px-4 py-2 lg:px-40 lg:py-6 bg-gray-950"}>
             <div className={""}>
                 <img src={"/logo.png"} alt={"Logo"}/>
             </div>
-            <div className={"flex gap-24 text-white nav"}>
+            <div className={"hidden lg:flex gap-24 text-white nav"}>
                 <div>
                    <a className={"uppercase"} href={"#"}>Buy mantas</a>
                 </div>
