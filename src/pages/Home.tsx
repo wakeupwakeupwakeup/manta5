@@ -1,6 +1,21 @@
 import Layout from "@/layouts/Layout.tsx";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 const Home = () => {
+    const sliderSettings = {
+        className: "center",
+        centerMode: true,
+        dots: true,
+        arrows: false,
+        infinite: true,
+        slide: 'img',
+        variableWidth: true,
+        centerPadding: '20px',
+        slidesToShow: 1,
+        speed: 500,
+    }
     return (
         <Layout>
             <main>
@@ -21,7 +36,7 @@ const Home = () => {
                             What is Manta5?
                         </h2>
                     </div>
-                    <div className={"flex flex-col max-w-[1376px] gap-16"}>
+                    <div className={"flex flex-col max-w-[1376px] gap-16 text-center"}>
                         <p>
                             Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
                             A tinkerer and entrepreneur at heart, Guy’s passion for the outdoors led him to co-found
@@ -51,7 +66,7 @@ const Home = () => {
                     </div>
                     <div className={"grid grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                         <div>
-                            <span className={"text-red-600"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
                                 Innovative
                             </span>
                             <p>
@@ -61,7 +76,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div>
-                            <span className={"text-red-600"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
                                 Fun
                             </span>
                             <p>
@@ -70,7 +85,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div>
-                            <span className={"text-red-600"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
                                 Zero Emissions
                             </span>
                             <p>
@@ -79,7 +94,7 @@ const Home = () => {
                             </p>
                         </div>
                         <div>
-                            <span className={"text-red-600"}>
+                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-8"}>
                                 Quiet
                             </span>
                             <p>
@@ -96,34 +111,34 @@ const Home = () => {
                         </span>
                         <h2>Buy Manta5</h2>
                     </div>
-                    <div className={"flex "}>
-                        <div className={"flex flex-col"}>
+                    <div className={"flex"}>
+                        <div className={"flex flex-col items-center"}>
                             <div>
                                 <img src={"/products/HYDROFOILER_SL3.png"}  alt={"HYDROFOILER SL3"}/>
                             </div>
-                            <span className={"uppercase"}>
+                            <span className={"uppercase font-bold text-3xl"}>
                                 Hydrofoiler sl3
                             </span>
-                            <a>
+                            <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
                                 Learn more
                             </a>
                         </div>
-                        <div className={"flex flex-col"}>
+                        <div className={"flex flex-col items-center"}>
                             <div>
                                 <img src={"/products/HYDROFOILER_SL3_PRO.png"}  alt={"HYDROFOILER SL3 PRO"}/>
                             </div>
-                            <span className={"uppercase"}>
+                            <span className={"uppercase font-bold text-3xl"}>
                                 Hydrofoiler sl3
                             </span>
-                            <a>
+                            <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
                                 Learn more
                             </a>
                         </div>
                     </div>
                 </section>
                 <section className={"flex justify-start bg-section text-white px-36 py-40"}>
-                    <div className={"max-w-2xl"}>
-                        <span>
+                    <div className={"flex flex-col gap-5 max-w-2xl"}>
+                        <span className={"subtitle"}>
                             Test-Ride and trainings
                         </span>
                         <h3 className={""}>
@@ -134,15 +149,19 @@ const Home = () => {
                             exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
                             Experience the unique sensation of gliding over water with these cutting-edge machines.
                         </p>
-                        <a>
-                            Try it yourself!
-                        </a>
+                        <div className={"mt-8"}>
+                            <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                Try it yourself!
+                            </a>
+                        </div>
                     </div>
                 </section>
-                <section>
-                    <div>
-
-                    </div>
+                <section className={"overflow-x-hidden py-40"}>
+                        <Slider {...sliderSettings}>
+                                <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
+                                <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
+                                <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
+                        </Slider>
                 </section>
             </main>
         </Layout>
