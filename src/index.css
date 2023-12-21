@@ -3,6 +3,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,11 +84,19 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  p {
+    @apply font-medium text-xl leading-10
+  }
+
+  .content {
+    @apply max-w-[1376px]
+  }
 }
 
 @layer components {
   h2 {
-    @apply text-5xl font-semibold
+    @apply text-5xl font-bold max-w-[660px] mb-12
   }
 
   h3 {
@@ -98,7 +107,13 @@
     @apply uppercase tracking-[1em] text-red-600 font-semibold
   }
 
-  .custom-dots {
+  section {
+    @apply px-52 py-40
+  }
+}
 
+@layer utilities {
+  .button {
+    transform: skew(-20deg, 0)
   }
 }

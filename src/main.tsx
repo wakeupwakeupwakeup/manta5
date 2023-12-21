@@ -8,13 +8,25 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Home from "@/pages/Home.tsx";
+import "react-image-gallery/styles/css/image-gallery.css"
+
+import {Home} from "@/pages/Home.tsx";
+import {BuyPage} from "@/pages/Buy.tsx";
+import {TestDrive} from "@/pages/TestDrive.tsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Home />,
     },
+    {
+        path: "/buy",
+        element: <BuyPage />
+    },
+    {
+        path: "/testdrive",
+        element: <TestDrive />
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

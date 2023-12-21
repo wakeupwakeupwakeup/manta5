@@ -19,7 +19,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         main: "url('/public/backgrounds/logo_picture.png')",
-        section: "url('/public/backgrounds/section_picture.png')"
+        section: "url('/public/backgrounds/section_picture.png')",
+        article: "url('/public/backgrounds/article_picture.png')"
       },
       colors: {
         border: "hsl(var(--border))",

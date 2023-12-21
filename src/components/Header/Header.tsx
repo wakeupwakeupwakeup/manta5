@@ -1,20 +1,23 @@
 import './Header.css'
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className={"flex justify-between px-4 py-2 lg:px-40 lg:py-6 bg-gray-950"}>
-            <div className={""}>
-                <img src={"/logo.png"} alt={"Logo"}/>
-            </div>
-            <div className={"hidden lg:flex gap-24 text-white nav"}>
-                <div>
-                   <a className={"uppercase"} href={"#"}>Buy mantas</a>
+        <div className={"px-4 py-2 lg:py-3 bg-gray-950"}>
+            <div className={"flex justify-between items-center max-w-[1600px] mx-auto"}>
+                <div className={""}>
+                    <img src={"/logo.png"} alt={"Logo"}/>
                 </div>
-                <div>
-                    <a className={"uppercase"} href={"#"}>Test-ride and trainings</a>
-                </div>
-                <div>
-                    <a className={"uppercase"} href={"#"}>About</a>
+                <div className={"hidden lg:flex gap-24 text-white nav"}>
+                    <div>
+                        <Link to={"/buy"} className={"uppercase"}>Buy mantas</Link>
+                    </div>
+                    <div>
+                        <a className={"uppercase"} href={"#"}>Test-ride and trainings</a>
+                    </div>
+                    <div>
+                        <a className={"uppercase"} href={"#"}>About</a>
+                    </div>
                 </div>
             </div>
         </div>
