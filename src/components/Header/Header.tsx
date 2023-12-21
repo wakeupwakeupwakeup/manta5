@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className={"px-4 py-2 lg:py-3 bg-gray-950"}>
-            <div className={"flex justify-between items-center max-w-[1600px] mx-auto"}>
+        <div className={"px-4 py-2 lg:py-3 lg:px-40 bg-gray-950"}>
+            <div className={"flex justify-between items-center"}>
                 <div className={""}>
                     <img src={"/logo.png"} alt={"Logo"}/>
                 </div>

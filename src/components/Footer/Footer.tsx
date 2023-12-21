@@ -1,9 +1,10 @@
+
 const Footer = () => {
     return (
         <div className={"flex flex-col bg-gray-950 text-white px-0 lg:px-40 py-14"}>
-            <div className={"flex justify-between"}>
+            <div className={"flex flex-col items-center gap-5 justify-between align-center lg:flex-row"}>
                 <div className={"flex justify-start"}>
-                    <div className={"flex flex-col items-center gap-4"}>
+                    <div className={"flex flex-col justify-center items-center gap-4"}>
                         <div>
                             <img src="/logo.png" alt={"Logo"}/>
                         </div>
@@ -17,27 +18,21 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"flex flex-col text-center gap-2"}>
-                    <p>
+                <div className={"flex flex-col justify-center text-center gap-1"}>
+                    <p className={"text-[9px] lg:text-[13px] leading-5"}>
                         ©️ All rights reserved.
                     </p>
-                    <p>
+                    <p className={"text-[9px] lg:text-[13px] leading-5"}>
                         The Manta5 brand is owned by Manta5 LP
                     </p>
-                    <p>
+                    <p className={"text-[9px] lg:text-[13px] leading-5"}>
                         WaterWay brand is owned by WaterWay Co., LTD.
                     </p>
                 </div>
-                <div className={"hidden lg:flex flex-col text-white nav"}>
-                    <div>
-                        <a className={"uppercase"} href={"#"}>Buy mantas</a>
-                    </div>
-                    <div>
-                        <a className={"uppercase"} href={"#"}>Test-ride and trainings</a>
-                    </div>
-                    <div>
-                        <a className={"uppercase"} href={"#"}>About</a>
-                    </div>
+                <div className={"hidden lg:flex flex-col justify-between text-white nav"}>
+                    <a className={"uppercase"} href={"#"}>Buy mantas</a>
+                    <a className={"uppercase"} href={"#"}>Test-ride and trainings</a>
+                    <a className={"uppercase"} href={"#"}>About</a>
                 </div>
             </div>
         </div>

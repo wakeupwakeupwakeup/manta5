@@ -85,30 +85,30 @@
     @apply bg-background text-foreground;
   }
 
-  p {
-    @apply font-medium text-xl leading-10
-  }
-
   .content {
-    @apply max-w-[1376px]
+    @apply max-w-full lg:max-w-[1376px]
   }
 }
 
 @layer components {
   h2 {
-    @apply text-5xl font-bold max-w-[660px] mb-12
+    @apply text-xl lg:text-5xl font-bold max-w-[660px] mb-6 lg:mb-12
   }
 
   h3 {
-    @apply text-5xl font-bold
+    @apply text-[15px] lg:text-3xl font-semibold text-red-600 mb-2
+  }
+
+  p {
+    @apply text-[10px] font-medium leading-5 lg:text-xl lg:leading-10
   }
 
   .subtitle {
-    @apply uppercase tracking-[1em] text-red-600 font-semibold
+    @apply text-[8px] uppercase tracking-[1em] text-red-600 font-semibold lg:text-base
   }
 
   section {
-    @apply px-52 py-40
+    @apply py-9 px-4 max-w-full lg:px-52 lg:py-40
   }
 }
 
@@ -116,4 +116,8 @@
   .button {
     transform: skew(-20deg, 0)
   }
+}
+
+.image-gallery {
+  max-width: 100vw;
 }

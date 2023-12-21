@@ -55,9 +55,9 @@ export function Home() {
                             <a className={"bg-red-600 uppercase py-5 px-8"}>New sl3 features</a>
                         </div>
                 </section>
-                <section className={"flex flex-col items-center px-4 py-24"}>
-                <div className={"content flex flex-col gap-16"}>
-                        <div className={"flex flex-col items-center text-center gap-5 mb-12"}>
+                <section className={"flex flex-col items-center"}>
+                    <div className={"content flex flex-col"}>
+                        <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
                             <div>
                                 <img src={"/patterns/sm_pattern.svg"} alt={"background"}/>
                             </div>
@@ -68,7 +68,7 @@ export function Home() {
                                 What is Manta5?
                             </h2>
                         </div>
-                        <div className={"flex flex-col gap-14 text-center"}>
+                        <div className={"flex flex-col gap-9 mb-40 lg:gap-14 text-center"}>
                             <p>
                                 Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
                                 A tinkerer and entrepreneur at heart, Guy’s passion for the outdoors led him to co-found
@@ -91,14 +91,15 @@ export function Home() {
                                 On top of this, there was no settling for any bulky buoyancy or hulls.
                             </p>
                         </div>
-                        <div>
-                            <ImageGallery items={images} showNav={false} showFullscreenButton={false} showPlayButton={false} />
-                        </div>
+                    </div>
+                    <div>
+                        <ImageGallery items={images} showNav={false} showFullscreenButton={false}
+                                      showPlayButton={false}/>
                     </div>
                 </section>
-                <section className={"flex flex-col items-center bg-gray-950 text-white px-4 py-32"}>
+                <section className={"flex flex-col items-center bg-gray-950 text-white"}>
                     <div className={"content"}>
-                        <div className={"flex flex-col items-center text-center gap-5 mb-24"}>
+                        <div className={"flex flex-col items-center text-center gap-5"}>
                         <span className={"subtitle"}>
                             Our advantages
                         </span>
@@ -106,39 +107,39 @@ export function Home() {
                         </div>
                         <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                             <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
+                            <h3>
                                 Innovative
-                            </span>
-                                <p className={"text-xl leading-10 font-light"}>
+                            </h3>
+                                <p className={"font-light"}>
                                     Explore water like never before with the Manta5 SL3, where unique technology,
                                     a powerful motor, and a robust battery come together to deliver unmatched stability
                                     and thrilling speed. Innovation meets efficiency in every ride.
                                 </p>
                             </div>
                             <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
+                            <h3>
                                 Fun
-                            </span>
-                                <p className={"text-xl leading-10 font-light"}>
+                            </h3>
+                                <p className={"font-light"}>
                                     Manta5 SL3 introduces a new era of sport — an aquatic adventure where you seamlessly
                                     transition from intense training to a leisurely water cruise.
                                 </p>
                             </div>
                             <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
+                            <h3>
                                 Zero Emissions
-                            </span>
-                                <p className={"text-xl leading-10 font-light"}>
+                            </h3>
+                                <p className={"font-light"}>
                                     Ride the Manta5 SL3 and be at peace with the planet. This eco-friendly transport
                                     makes
                                     no compromise on performance while ensuring you leave only ripples behind.
                                 </p>
                             </div>
                             <div>
-                            <span className={"inline-block text-3xl font-semibold text-red-600 mb-2"}>
+                            <h3>
                                 Quiet
-                            </span>
-                                <p className={"text-xl leading-10 font-light"}>
+                            </h3>
+                                <p className={"font-light"}>
                                     Experience the pure serenity of the sea with Manta5 SL3's silent electric motor and
                                     noiseless pedaling. Glide through the water and enjoy the clean maritime air without
                                     disturbing the peaceful soundscape around you
@@ -147,7 +148,7 @@ export function Home() {
                         </div>
                     </div>
                 </section>
-                <section className={"flex flex-col items-center px-4 py-28"}>
+                <section className={"flex flex-col items-center"}>
                     <div className={"content"}>
                         <div className={"flex flex-col items-center text-center gap-5 mb-24"}>
                             <span className={"subtitle"}>
@@ -160,7 +161,7 @@ export function Home() {
                                 <div>
                                     <img src={"/products/HYDROFOILER_SL3.png"} alt={"HYDROFOILER SL3"}/>
                                 </div>
-                                <span className={"uppercase font-bold text-3xl"}>
+                                <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
                                     Hydrofoiler sl3
                                 </span>
                                 <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
@@ -171,7 +172,7 @@ export function Home() {
                                 <div>
                                     <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>
                                 </div>
-                                <span className={"uppercase font-bold text-3xl"}>
+                                <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
                                 Hydrofoiler sl3 pro
                             </span>
                                 <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
@@ -181,15 +182,14 @@ export function Home() {
                         </div>
                     </div>
                 </section>
-                <section
-                    className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white px-4 lg:px-36 py-40"}>
+                <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"}>
                     <div className={"flex flex-col gap-5 max-w-2xl"}>
                         <span className={"subtitle"}>
                             Test-Ride and trainings
                         </span>
-                        <h3 className={""}>
+                        <h2 className={""}>
                             Join Our Training and <br/>Test-Drive Experience!
-                        </h3>
+                        </h2>
                         <p>
                             Are you ready to dive into the future of water sports? WaterWay invites you to join our
                             exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
