@@ -5,7 +5,10 @@ export function BuyPage() {
         <Layout>
             <>
                 <section className={"object-contain p-0"}>
-                    <img className={"object-contain"} src={"/backgrounds/manta_picture.png"} alt={"Manta picture"}/>
+                    {/*<img className={"object-contain"} src={"/backgrounds/manta_picture.png"} alt={"Manta picture"}/>*/}
+                    <video autoPlay={true} loop muted>
+                        <source src={"videos/Easy_launch_technology.mp4"} type={"video/mp4"}/>
+                    </video>
                 </section>
                 <section className={"flex flex-col gap-32"}>
                     <div className={"flex gap-12"}>
