@@ -20,28 +20,28 @@ const sliderSettings = {
 
 const images = [
     {
-        original: "public/photos/Home/HOME_design_gallery_export_MAIN.jpg",
-        thumbnail: "public/photos/Home/HOME_design_gallery_export_MAIN.jpg",
+        original: "photos/Home/HOME_design_gallery_export_MAIN.jpg",
+        thumbnail: "photos/Home/HOME_design_gallery_export_MAIN.jpg",
     },
     {
-        original: "public/photos/Home/HOME_design_gallery_export_1.jpg",
-        thumbnail: "public/photos/Home/HOME_design_gallery_export_1.jpg"
+        original: "photos/Home/HOME_design_gallery_export_1.jpg",
+        thumbnail: "photos/Home/HOME_design_gallery_export_1.jpg"
     },
     {
-        original: "public/photos/Home/HOME_design_gallery_export_2.jpg",
-        thumbnail: "public/photos/Home/HOME_design_gallery_export_2.jpg",
+        original: "photos/Home/HOME_design_gallery_export_2.jpg",
+        thumbnail: "photos/Home/HOME_design_gallery_export_2.jpg",
     },
     {
-        original: "public/photos/Home/HOME_design_gallery_export_3.jpg",
-        thumbnail: "public/photos/Home/HOME_design_gallery_export_3.jpg",
+        original: "photos/Home/HOME_design_gallery_export_3.jpg",
+        thumbnail: "photos/Home/HOME_design_gallery_export_3.jpg",
     },
     {
-        original: "public/photos/Home/HOME_design_gallery_export_4.jpg",
-        thumbnail: "public/photos/Home/HOME_design_gallery_export_4.jpg",
+        original: "photos/Home/HOME_design_gallery_export_4.jpg",
+        thumbnail: "photos/Home/HOME_design_gallery_export_4.jpg",
     },
     {
-        original: "public/photos/Home/HOME_design_gallery_export_5.jpg",
-        thumbnail: "public/photos/Home/HOME_design_gallery_export_5.jpg",
+        original: "photos/Home/HOME_design_gallery_export_5.jpg",
+        thumbnail: "photos/Home/HOME_design_gallery_export_5.jpg",
     }
 ]
 
