@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className={"px-4 py-2 lg:py-3 lg:px-40 bg-[#212121]"}>
+        <div className={"bg-neutral-900 px-4 py-2 lg:py-3 lg:px-40 "}>
             <div className={"flex justify-between items-center"}>
                 <div className={""}>
                     <img src={"/logo.png"} alt={"Logo"}/>

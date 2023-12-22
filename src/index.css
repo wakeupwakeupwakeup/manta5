@@ -108,7 +108,7 @@
   }
 
   section {
-    @apply py-9 px-4 max-w-full lg:px-52 lg:py-40
+    @apply py-9 px-4 max-w-full lg:px-52 lg:py-24
   }
 }
 
