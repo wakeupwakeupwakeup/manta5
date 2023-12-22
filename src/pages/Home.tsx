@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import {Link} from "react-router-dom";
 import ImageGallery from "react-image-gallery"
+import { Slide, Fade } from "react-awesome-reveal";
 
 const sliderSettings = {
     className: "center",
@@ -45,8 +46,8 @@ const images = [
     }
 ]
 
-export function Home() {
 
+export function Home() {
     return (
         <Layout>
             <main>
@@ -69,27 +70,35 @@ export function Home() {
                             </h2>
                         </div>
                         <div className={"flex flex-col gap-9 mb-40 lg:gap-14 text-center"}>
-                            <p>
-                                Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
-                                A tinkerer and entrepreneur at heart, Guy’s passion for the outdoors led him to co-found
-                                New Zealand’s largest multi-sport retailer Torpedo7. After a successful sale of Torpedo7
-                                Guy
-                                leapt right into his next venture – to create new world sport.
-                            </p>
-                            <p>
-                                The hydrofoiling bike concept literally came to Guy’s mind in a dream – a dream where
-                                he pushed off from his holiday home jetty and rode a bicycle-type product that brought
-                                him
-                                the same feeling and freedom as his road bike. He cruised out into the bay before being
-                                greeted by a pod of dolphins which swam alongside him as he rode.
-                            </p>
-                            <p>
-                                He woke up but the dream stuck with him and he started the Manta5 journey.
-                                The original design brief presented no easy feat. Just as a high-performance bicycle,
-                                Guy envisioned a concept that was lightweight, fast, agile, easy to transport and
-                                assemble.
-                                On top of this, there was no settling for any bulky buoyancy or hulls.
-                            </p>
+                            <Slide triggerOnce={true}>
+                                <p>
+                                    Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
+                                    A tinkerer and entrepreneur at heart, Guy’s passion for the outdoors led him to
+                                    co-found
+                                    New Zealand’s largest multi-sport retailer Torpedo7. After a successful sale of
+                                    Torpedo7
+                                    Guy
+                                    leapt right into his next venture – to create new world sport.
+                                </p>
+                                <p>
+                                    The hydrofoiling bike concept literally came to Guy’s mind in a dream – a dream
+                                    where
+                                    he pushed off from his holiday home jetty and rode a bicycle-type product that
+                                    brought
+                                    him
+                                    the same feeling and freedom as his road bike. He cruised out into the bay before
+                                    being
+                                    greeted by a pod of dolphins which swam alongside him as he rode.
+                                </p>
+                                <p>
+                                    He woke up but the dream stuck with him and he started the Manta5 journey.
+                                    The original design brief presented no easy feat. Just as a high-performance
+                                    bicycle,
+                                    Guy envisioned a concept that was lightweight, fast, agile, easy to transport and
+                                    assemble.
+                                    On top of this, there was no settling for any bulky buoyancy or hulls.
+                                </p>
+                            </Slide>
                         </div>
                     </div>
                     <div>
@@ -107,43 +116,72 @@ export function Home() {
                         </div>
                         <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                             <div>
-                            <h3>
-                                Innovative
-                            </h3>
-                                <p className={"font-light"}>
-                                    Explore water like never before with the Manta5 SL3, where unique technology,
-                                    a powerful motor, and a robust battery come together to deliver unmatched stability
-                                    and thrilling speed. Innovation meets efficiency in every ride.
-                                </p>
+                                <Slide>
+                                    <Fade>
+                                        <h3>
+                                            Innovative
+                                        </h3>
+                                    </Fade>
+                                </Slide>
+                                <Slide>
+                                    <p className={"font-light"}>
+                                        Explore water like never before with the Manta5 SL3, where unique
+                                        technology,
+                                        a powerful motor, and a robust battery come together to deliver unmatched
+                                        stability
+                                        and thrilling speed. Innovation meets efficiency in every ride.
+                                    </p>
+                                </Slide>
                             </div>
                             <div>
-                            <h3>
-                                Fun
-                            </h3>
-                                <p className={"font-light"}>
-                                    Manta5 SL3 introduces a new era of sport — an aquatic adventure where you seamlessly
-                                    transition from intense training to a leisurely water cruise.
-                                </p>
+                                <Slide>
+                                    <Fade>
+                                        <h3>
+                                            Fun
+                                        </h3>
+                                    </Fade>
+                                </Slide>
+                                <Slide>
+                                    <p className={"font-light"}>
+                                        Manta5 SL3 introduces a new era of sport — an aquatic adventure where you
+                                        seamlessly
+                                        transition from intense training to a leisurely water cruise.
+                                    </p>
+                                </Slide>
                             </div>
                             <div>
-                            <h3>
-                                Zero Emissions
-                            </h3>
-                                <p className={"font-light"}>
-                                    Ride the Manta5 SL3 and be at peace with the planet. This eco-friendly transport
-                                    makes
-                                    no compromise on performance while ensuring you leave only ripples behind.
-                                </p>
+                                <Slide>
+                                    <Fade>
+                                        <h3>
+                                            Zero Emissions
+                                        </h3>
+                                    </Fade>
+                                </Slide>
+                                <Slide>
+                                    <p className={"font-light"}>
+                                        Ride the Manta5 SL3 and be at peace with the planet. This eco-friendly transport
+                                        makes
+                                        no compromise on performance while ensuring you leave only ripples behind.
+                                    </p>
+                                </Slide>
                             </div>
                             <div>
-                            <h3>
-                                Quiet
-                            </h3>
-                                <p className={"font-light"}>
-                                    Experience the pure serenity of the sea with Manta5 SL3's silent electric motor and
-                                    noiseless pedaling. Glide through the water and enjoy the clean maritime air without
-                                    disturbing the peaceful soundscape around you
-                                </p>
+                                <Slide>
+                                    <Fade>
+                                        <h3>
+                                            Quiet
+                                        </h3>
+                                    </Fade>
+                                </Slide>
+                                <Slide>
+                                    <p className={"font-light"}>
+                                        Experience the pure serenity of the sea with Manta5 SL3's silent electric motor
+                                        and
+                                        noiseless pedaling. Glide through the water and enjoy the clean maritime air
+                                        without
+                                        disturbing the peaceful soundscape around you
+                                    </p>
+                                </Slide>
                             </div>
                         </div>
                     </div>
