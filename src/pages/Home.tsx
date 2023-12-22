@@ -244,24 +244,26 @@ export const Home = React.memo(() => {
                     </div>
                 </section>
                 <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"}>
-                    <div className={"flex flex-col gap-5 max-w-2xl"}>
-                        <span className={"subtitle"}>
-                            Test-Ride and trainings
-                        </span>
-                        <h2 className={""}>
-                            Join Our Training and <br/>Test-Drive Experience!
-                        </h2>
-                        <p>
-                            Are you ready to dive into the future of water sports? WaterWay invites you to join our
-                            exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
-                            Experience the unique sensation of gliding over water with these cutting-edge machines.
-                        </p>
-                        <div className={"mt-8"}>
-                            <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                Try it yourself!
-                            </a>
+                    <Slide triggerOnce={true}>
+                        <div className={"flex flex-col gap-5 max-w-2xl"}>
+                            <span className={"subtitle"}>
+                                Test-Ride and trainings
+                            </span>
+                            <h2 className={""}>
+                                Join Our Training and <br/>Test-Drive Experience!
+                            </h2>
+                            <p>
+                                Are you ready to dive into the future of water sports? WaterWay invites you to join our
+                                exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
+                                Experience the unique sensation of gliding over water with these cutting-edge machines.
+                            </p>
+                            <div className={"mt-8"}>
+                                <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                    Try it yourself!
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </Slide>
                 </section>
                 <section className={"overflow-x-hidden py-40 px-0"}>
                     <Slider {...sliderSettings}>
