@@ -121,3 +121,15 @@
 .image-gallery {
   max-width: 100vw;
 }
+
+.slick-dots li {
+  margin: -6px 12px !important;
+}
+
+.slick-dots li button:before {
+  background-color: #212121 !important;
+  content: '' !important;
+  width: 30px !important;
+  height: 2px !important;
+  padding: 0 4px !important;
+}

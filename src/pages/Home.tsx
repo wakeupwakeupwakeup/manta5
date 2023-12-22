@@ -14,10 +14,22 @@ const sliderSettings = {
     arrows: false,
     infinite: true,
     slide: 'img',
+    autoplay: true,
     variableWidth: true,
     centerPadding: '20px',
     slidesToShow: 1,
-    speed: 500,
+    adaptiveHeight: true,
+    speed: 1000,
+    cssEase: "linear",
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 1,
+                dots: false
+            }
+        }
+    ]
 }
 
 const images = [
@@ -59,18 +71,20 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content flex flex-col"}>
-                        <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
-                            <div>
-                                <img src={"/patterns/sm_pattern.svg"} alt={"background"}/>
-                            </div>
-                            <span className={"subtitle"}>
+                        <Fade>
+                            <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
+                                <div>
+                                    <img src={"/patterns/sm_pattern.svg"} alt={"background"}/>
+                                </div>
+                                <span className={"subtitle"}>
                                 Our history
                             </span>
-                            <h2>
-                                What is Manta5?
-                            </h2>
-                        </div>
-                        <div className={"flex flex-col gap-9 mb-40 lg:gap-14 text-center"}>
+                                <h2>
+                                    What is Manta5?
+                                </h2>
+                            </div>
+                        </Fade>
+                        <div className={"flex flex-col gap-9 mb-12 lg:mb-40 lg:gap-14 text-center"}>
                             <Slide triggerOnce={true}>
                                 <p>
                                     Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
@@ -103,18 +117,20 @@ export const Home = React.memo(() => {
                         </div>
                     </div>
                     <div>
-                        <ImageGallery items={images} showNav={false} showFullscreenButton={false}
+                        <ImageGallery items={images} autoPlay={true} showNav={false} showFullscreenButton={false}
                                       showPlayButton={false} lazyLoad={true}/>
                     </div>
                 </section>
-                <section className={"flex flex-col items-center bg-gray-950 text-white"}>
+                <section className={"flex flex-col items-center bg-[#212121] text-white"}>
                     <div className={"content"}>
-                        <div className={"flex flex-col items-center text-center gap-5"}>
+                        <Fade>
+                            <div className={"flex flex-col items-center text-center gap-5"}>
                             <span className={"subtitle"}>
                                 Our advantages
                             </span>
-                            <h2>What is the uniqueness?</h2>
-                        </div>
+                                <h2>What is the uniqueness?</h2>
+                            </div>
+                        </Fade>
                         <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                             <div>
                                 <Slide triggerOnce={true}>
@@ -189,35 +205,41 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content"}>
-                        <div className={"flex flex-col items-center text-center gap-5 mb-24"}>
+                        <Fade>
+                            <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
                             <span className={"subtitle"}>
                                 Your waterway
                             </span>
-                            <h2>Buy Manta5</h2>
-                        </div>
+                                <h2>Buy Manta5</h2>
+                            </div>
+                        </Fade>
                         <div className={"flex flex-col gap-8 lg:flex-row"}>
-                            <div className={"flex flex-col gap-4 items-center"}>
-                                <div>
+                            <Slide triggerOnce={true}>
+                                <div className={"flex flex-col gap-4 items-center"}>
+                                    <div>
                                     <img src={"/products/HYDROFOILER_SL3.png"} alt={"HYDROFOILER SL3"}/>
+                                    </div>
+                                    <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
+                                        Hydrofoiler sl3
+                                    </span>
+                                    <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                        By your Manta5 in Thailand
+                                    </Link>
                                 </div>
-                                <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
-                                    Hydrofoiler sl3
-                                </span>
-                                <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                    By your Manta5 in Thailand
-                                </Link>
-                            </div>
-                            <div className={"flex flex-col gap-4 items-center"}>
-                                <div>
-                                    <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>
+                            </Slide>
+                            <Slide triggerOnce={true} direction={"right"}>
+                                <div className={"flex flex-col gap-4 items-center"}>
+                                    <div>
+                                        <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>
+                                    </div>
+                                    <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
+                                        Hydrofoiler sl3 pro
+                                    </span>
+                                    <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                        By your Manta5 in Thailand
+                                    </Link>
                                 </div>
-                                <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
-                                    Hydrofoiler sl3 pro
-                                </span>
-                                <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                    By your Manta5 in Thailand
-                                </Link>
-                            </div>
+                            </Slide>
                         </div>
                     </div>
                 </section>
@@ -241,11 +263,11 @@ export const Home = React.memo(() => {
                         </div>
                     </div>
                 </section>
-                <section className={"hidden overflow-x-hidden py-40"}>
+                <section className={"overflow-x-hidden py-40 px-0"}>
                     <Slider {...sliderSettings}>
-                        <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
-                        <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
-                        <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"inline-block w-[945px] h-[525px]"}/>
+                        <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
+                        <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
+                        <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
                     </Slider>
                 </section>
             </main>
