@@ -85,7 +85,7 @@ export const Home = React.memo(() => {
                             </div>
                         </Fade>
                         <div className={"flex flex-col gap-9 mb-12 lg:mb-40 lg:gap-14 text-center"}>
-                            <Slide triggerOnce={true}>
+                            <Slide triggerOnce={true} cascade={true}>
                                 <p>
                                     Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
                                     A tinkerer and entrepreneur at heart, Guy’s passion for the outdoors led him to
