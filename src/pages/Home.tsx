@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "@/layouts/Layout.tsx";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"
@@ -47,14 +48,14 @@ const images = [
 ]
 
 
-export function Home() {
+export const Home = React.memo(() => {
     return (
         <Layout>
             <main>
                 <section className={"flex flex-col justify-end items-center bg-main bg-center bg-cover h-screen text-white pb-28"}>
-                        <div className={"button shrink"}>
-                            <a className={"bg-red-600 uppercase py-5 px-8"}>New sl3 features</a>
-                        </div>
+                    <div className={"button shrink"}>
+                        <a className={"bg-red-600 uppercase py-5 px-8"}>New sl3 features</a>
+                    </div>
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content flex flex-col"}>
@@ -63,7 +64,7 @@ export function Home() {
                                 <img src={"/patterns/sm_pattern.svg"} alt={"background"}/>
                             </div>
                             <span className={"subtitle"}>
-                            Our history
+                                Our history
                             </span>
                             <h2>
                                 What is Manta5?
@@ -103,27 +104,27 @@ export function Home() {
                     </div>
                     <div>
                         <ImageGallery items={images} showNav={false} showFullscreenButton={false}
-                                      showPlayButton={false}/>
+                                      showPlayButton={false} lazyLoad={true}/>
                     </div>
                 </section>
                 <section className={"flex flex-col items-center bg-gray-950 text-white"}>
                     <div className={"content"}>
                         <div className={"flex flex-col items-center text-center gap-5"}>
-                        <span className={"subtitle"}>
-                            Our advantages
-                        </span>
+                            <span className={"subtitle"}>
+                                Our advantages
+                            </span>
                             <h2>What is the uniqueness?</h2>
                         </div>
                         <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                             <div>
-                                <Slide>
-                                    <Fade>
+                                <Slide triggerOnce={true}>
+                                    <Fade triggerOnce={true}>
                                         <h3>
                                             Innovative
                                         </h3>
                                     </Fade>
                                 </Slide>
-                                <Slide>
+                                <Slide triggerOnce={true}>
                                     <p className={"font-light"}>
                                         Explore water like never before with the Manta5 SL3, where unique
                                         technology,
@@ -134,14 +135,14 @@ export function Home() {
                                 </Slide>
                             </div>
                             <div>
-                                <Slide>
-                                    <Fade>
+                                <Slide triggerOnce={true}>
+                                    <Fade triggerOnce={true}>
                                         <h3>
                                             Fun
                                         </h3>
                                     </Fade>
                                 </Slide>
-                                <Slide>
+                                <Slide triggerOnce={true}>
                                     <p className={"font-light"}>
                                         Manta5 SL3 introduces a new era of sport — an aquatic adventure where you
                                         seamlessly
@@ -150,14 +151,14 @@ export function Home() {
                                 </Slide>
                             </div>
                             <div>
-                                <Slide>
-                                    <Fade>
+                                <Slide triggerOnce={true}>
+                                    <Fade triggerOnce={true}>
                                         <h3>
                                             Zero Emissions
                                         </h3>
                                     </Fade>
                                 </Slide>
-                                <Slide>
+                                <Slide triggerOnce={true}>
                                     <p className={"font-light"}>
                                         Ride the Manta5 SL3 and be at peace with the planet. This eco-friendly transport
                                         makes
@@ -166,14 +167,14 @@ export function Home() {
                                 </Slide>
                             </div>
                             <div>
-                                <Slide>
-                                    <Fade>
+                                <Slide triggerOnce={true}>
+                                    <Fade triggerOnce={true}>
                                         <h3>
                                             Quiet
                                         </h3>
                                     </Fade>
                                 </Slide>
-                                <Slide>
+                                <Slide triggerOnce={true}>
                                     <p className={"font-light"}>
                                         Experience the pure serenity of the sea with Manta5 SL3's silent electric motor
                                         and
@@ -211,8 +212,8 @@ export function Home() {
                                     <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>
                                 </div>
                                 <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
-                                Hydrofoiler sl3 pro
-                            </span>
+                                    Hydrofoiler sl3 pro
+                                </span>
                                 <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
                                     By your Manta5 in Thailand
                                 </Link>
@@ -250,4 +251,4 @@ export function Home() {
             </main>
         </Layout>
     );
-}
+})
