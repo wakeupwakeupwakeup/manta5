@@ -71,7 +71,7 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content flex flex-col"}>
-                        <Fade>
+                        <Fade triggerOnce={true}>
                             <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
                                 <div>
                                     <img src={"/patterns/sm_pattern.svg"} alt={"background"}/>
@@ -123,7 +123,7 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center bg-[#212121] text-white"}>
                     <div className={"content"}>
-                        <Fade>
+                        <Fade triggerOnce={true}>
                             <div className={"flex flex-col items-center text-center gap-5"}>
                             <span className={"subtitle"}>
                                 Our advantages
@@ -205,7 +205,7 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content"}>
-                        <Fade>
+                        <Fade triggerOnce={true}>
                             <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
                             <span className={"subtitle"}>
                                 Your waterway
@@ -244,26 +244,26 @@ export const Home = React.memo(() => {
                     </div>
                 </section>
                 <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"}>
-                    <Slide triggerOnce={true}>
                         <div className={"flex flex-col gap-5 max-w-2xl"}>
-                            <span className={"subtitle"}>
-                                Test-Ride and trainings
-                            </span>
-                            <h2 className={""}>
-                                Join Our Training and <br/>Test-Drive Experience!
-                            </h2>
-                            <p>
-                                Are you ready to dive into the future of water sports? WaterWay invites you to join our
-                                exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
-                                Experience the unique sensation of gliding over water with these cutting-edge machines.
-                            </p>
-                            <div className={"mt-8"}>
-                                <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                    Try it yourself!
-                                </a>
-                            </div>
+                            <Slide triggerOnce={true}>
+                                <span className={"subtitle"}>
+                                    Test-Ride and trainings
+                                </span>
+                                <h2 className={""}>
+                                    Join Our Training and <br/>Test-Drive Experience!
+                                </h2>
+                                <p>
+                                    Are you ready to dive into the future of water sports? WaterWay invites you to join our
+                                    exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
+                                    Experience the unique sensation of gliding over water with these cutting-edge machines.
+                                </p>
+                                <div className={"mt-8"}>
+                                    <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                        Try it yourself!
+                                    </a>
+                                </div>
+                            </Slide>
                         </div>
-                    </Slide>
                 </section>
                 <section className={"overflow-x-hidden py-40 px-0"}>
                     <Slider {...sliderSettings}>
