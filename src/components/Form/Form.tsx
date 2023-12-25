@@ -1,4 +1,4 @@
-import {useForm, Controller, FieldValues, Control, FieldError} from 'react-hook-form'
+import {useForm, Controller, FieldValues, Control, FieldError, FieldErrors} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
@@ -53,10 +53,9 @@ interface IInputsProps {
         }
     },
     control: Control<FieldValues>,
-    errors: FieldError | undefined,
 }
 
-function Inputs({fields, control, errors}: IInputsProps) {
+function Inputs({fields, control}: IInputsProps) {
     console.log(fields)
     return (
         <div className={"grid grid-cols-2 gap-5 mb-8"}>
@@ -74,11 +73,6 @@ function Inputs({fields, control, errors}: IInputsProps) {
                                     type={fields[fieldName].type}
                                 />}
                         />
-                        <p
-                            className={"pl-2 text-sm"}
-                        >
-                            {errors[fields[fieldName].index]?.message}
-                        </p>
                     </div>
                 ))
             }
@@ -87,7 +81,7 @@ function Inputs({fields, control, errors}: IInputsProps) {
 }
 
 export function Form() {
-    const { control, formState: {errors}} = useForm({
+    const { control} = useForm({
         resolver: yupResolver(schema),
     })
 
@@ -101,7 +95,7 @@ export function Form() {
             // onSubmit={handleSubmit(onSubmit)}
         >
             <div>
-                <Inputs fields={inputs} control={control} errors={errors}/>
+                <Inputs fields={inputs} control={control} />
                 <button
                     type={"submit"}
                     className={"w-full text-white bg-red-600 py-6"}
