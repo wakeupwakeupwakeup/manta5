@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 import Layout from "@/layouts/Layout.tsx";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"
