@@ -135,7 +135,7 @@ export const Home = React.memo(() => {
                 <section className={"flex flex-col items-center bg-[#212121] text-white"}>
                     <div className={"content"}>
                         <Title title={"What is the uniqueness?"} subtitle={"Our advantages"} />
-                        <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
+                        <div className={"grid grid-cols-1 gap-y-3 lg:grid-cols-2 grid-rows-2 max-w-[1376px] lg:gap-y-12 gap-x-52"}>
                             <div>
                                 <Slide triggerOnce={true}>
                                     <Fade triggerOnce={true}>
