@@ -220,7 +220,7 @@ export const Home = React.memo(() => {
                                         Hydrofoiler sl3
                                     </span>
                                     <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                        By your Manta5 in Thailand
+                                        Buy your Manta5 in Thailand
                                     </Link>
                                 </div>
                             </Slide>
@@ -233,7 +233,7 @@ export const Home = React.memo(() => {
                                         Hydrofoiler sl3 pro
                                     </span>
                                     <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                        By your Manta5 in Thailand
+                                        Buy your Manta5 in Thailand
                                     </Link>
                                 </div>
                             </Slide>
