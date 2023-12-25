@@ -219,7 +219,7 @@ export const Home = React.memo(() => {
                                     <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
                                         Hydrofoiler sl3
                                     </span>
-                                    <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                    <Link to={"/buy"} className={"text-[12px] lg:text-lg font-semibold bg-red-600 py-5 px-8 text-white"}>
                                         Buy your Manta5 in Thailand
                                     </Link>
                                 </div>
