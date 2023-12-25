@@ -1,4 +1,4 @@
-import {useForm, Controller, FieldValues, Control, FieldError, FieldErrors} from 'react-hook-form'
+import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
