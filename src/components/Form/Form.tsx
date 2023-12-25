@@ -93,13 +93,15 @@ export function Form() {
         resolver: yupResolver(schema),
     })
 
-    const onSubmit = (data) => {
-        console.log(data);
-        // Добавьте здесь логику для отправки данных
-    }
+    // const onSubmit = (data) => {
+    //     console.log(data);
+    //     // Добавьте здесь логику для отправки данных
+    // }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+            // onSubmit={handleSubmit(onSubmit)}
+        >
             <div>
                 <Inputs fields={inputs} control={control} errors={errors}/>
                 <button
