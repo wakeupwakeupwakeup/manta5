@@ -53,9 +53,7 @@ interface IInputsProps {
         }
     },
     control: Control<FieldValues>,
-    errors: {
-        [key: string]: FieldError | undefined
-    }
+    errors: FieldError | undefined,
 }
 
 function Inputs({fields, control, errors}: IInputsProps) {
@@ -89,7 +87,7 @@ function Inputs({fields, control, errors}: IInputsProps) {
 }
 
 export function Form() {
-    const {handleSubmit, control, formState: {errors}} = useForm({
+    const { control, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
     })
 
