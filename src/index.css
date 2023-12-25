@@ -82,6 +82,7 @@
   }
 
   body {
+    scroll-behavior: smooth;
     @apply bg-background text-foreground;
   }
 
@@ -91,16 +92,20 @@
 }
 
 @layer components {
+  h1 {
+    @apply leading-5 text-xl lg:text-5xl font-extrabold
+  }
+
   h2 {
     @apply text-xl lg:text-5xl font-bold max-w-[660px] mb-6 lg:mb-12
   }
 
   h3 {
-    @apply text-[15px] lg:text-3xl font-semibold text-red-600 mb-2
+    @apply text-[15px] lg:text-3xl font-semibold text-red-600 mb-2 relative
   }
 
   p {
-    @apply text-[10px] font-medium leading-5 lg:text-xl lg:leading-10
+    @apply text-[10px] font-normal leading-5 lg:text-xl lg:leading-10
   }
 
   .subtitle {
@@ -108,7 +113,7 @@
   }
 
   section {
-    @apply py-9 px-4 max-w-full lg:px-52 lg:py-24
+    @apply py-9 px-5 max-w-full sm:px-14 md:px-24 lg:px-36 xl:px-48 2xl:px-64
   }
 }
 
@@ -132,4 +137,13 @@
   width: 30px !important;
   height: 2px !important;
   padding: 0 4px !important;
+}
+
+.slick-slide {
+  @apply w-screen lg:w-auto
+}
+
+/*Убрать полосу прокрутки для всей страницы*/
+::-webkit-scrollbar {
+  width: 0;
 }

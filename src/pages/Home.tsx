@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Layout from "@/layouts/Layout.tsx";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"
@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css"
 import {Link} from "react-router-dom";
 import ImageGallery from "react-image-gallery"
 import { Slide, Fade } from "react-awesome-reveal";
+import {Title} from "@/components/Title/Title.tsx";
 
 const sliderSettings = {
     className: "center",
@@ -16,17 +17,17 @@ const sliderSettings = {
     slide: 'img',
     autoplay: true,
     variableWidth: true,
-    centerPadding: '20px',
     slidesToShow: 1,
     adaptiveHeight: true,
     speed: 1000,
     cssEase: "linear",
     responsive: [
         {
-            breakpoint: 1024,
+            breakpoint: 768,
             settings: {
                 slidesToShow: 1,
-                dots: false
+                centerMode: false, /* set centerMode to false to show complete slide instead of 3 */
+                slidesToScroll: 1
             }
         }
     ]
@@ -61,29 +62,33 @@ const images = [
 
 
 export const Home = React.memo(() => {
+    // const headerRef = useRef(null)
+    // const [headerHeight, setHeaderHeight] = useState(0)
+    //
+    // useEffect(() => {
+    //     const updateElementHeight() {
+    //         if (headerRef.current) {
+    //             const height = headerRef.current.getBoundingClientRect()
+    //         }
+    //     }
+    // }, []);
     return (
         <Layout>
             <main>
-                <section className={"flex flex-col justify-end items-center bg-main bg-center bg-cover h-screen text-white pb-28"}>
-                    <div className={"button shrink"}>
+                <section className={"flex flex-col justify-end items-center bg-main bg-cover bg-center lg:justify-between lg:bg-150% lg:bg-[0%_25%] h-[calc(100vh-78px)] bg-no-repeat text-white pb-28"}>
+                    <div className={"hidden lg:flex self-start lg:w-2/3 justify-center lg:justify-start h-full w-full pt-80 lg:pt-48 text-center"}>
+                        <h1>
+                            <span className={"text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[128px] 2xl: uppercase"}>WaterWay</span> <br/>
+                            <span className={"text-[12px] sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-medium text-red-500 uppercase"}>official dealer Manta5 in Thailand</span>
+                        </h1>
+                    </div>
+                    <div className={"button shrink self"}>
                         <a className={"bg-red-600 uppercase py-5 px-8"}>New sl3 features</a>
                     </div>
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content flex flex-col"}>
-                        <Fade triggerOnce={true}>
-                            <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
-                                <div>
-                                    <img src={"/patterns/sm_pattern.svg"} alt={"background"}/>
-                                </div>
-                                <span className={"subtitle"}>
-                                Our history
-                            </span>
-                                <h2>
-                                    What is Manta5?
-                                </h2>
-                            </div>
-                        </Fade>
+                        <Title title={"What is Manta5?"} subtitle={"Our history"} />
                         <div className={"flex flex-col gap-9 mb-12 lg:mb-20 lg:gap-14 text-center"}>
                             <Slide triggerOnce={true} cascade={true} damping={0.3}>
                                 <p>
@@ -117,20 +122,19 @@ export const Home = React.memo(() => {
                         </div>
                     </div>
                     <div>
-                        <ImageGallery items={images} autoPlay={true} showNav={false} showFullscreenButton={false}
-                                      showPlayButton={false} lazyLoad={true}/>
+                        <ImageGallery
+                            items={images}
+                            autoPlay={true}
+                            showNav={false}
+                            showFullscreenButton={false}
+                            showPlayButton={false}
+                            lazyLoad={true}
+                        />
                     </div>
                 </section>
                 <section className={"flex flex-col items-center bg-[#212121] text-white"}>
                     <div className={"content"}>
-                        <Fade triggerOnce={true}>
-                            <div className={"flex flex-col items-center text-center gap-5"}>
-                            <span className={"subtitle"}>
-                                Our advantages
-                            </span>
-                                <h2>What is the uniqueness?</h2>
-                            </div>
-                        </Fade>
+                        <Title title={"What is the uniqueness?"} subtitle={"Our advantages"} />
                         <div className={"grid grid-cols-1 lg:grid-cols-2 grid-rows-2 max-w-[1376px] gap-y-12 gap-x-52"}>
                             <div>
                                 <Slide triggerOnce={true}>
@@ -205,14 +209,7 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content"}>
-                        <Fade triggerOnce={true}>
-                            <div className={"flex flex-col items-center text-center gap-3 lg:gap-5"}>
-                            <span className={"subtitle"}>
-                                Your waterway
-                            </span>
-                                <h2>Buy Manta5</h2>
-                            </div>
-                        </Fade>
+                        <Title title={"Buy manta5"} subtitle={"Your waterway"} />
                         <div className={"flex flex-col gap-8 lg:flex-row"}>
                             <Slide triggerOnce={true}>
                                 <div className={"flex flex-col gap-4 items-center"}>
@@ -267,9 +264,9 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"overflow-x-hidden py-40 px-0"}>
                     <Slider {...sliderSettings}>
-                        <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
-                        <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
-                        <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
+                        <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"px-0 lg:px-2"}/>
+                        <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"px-0 lg:px-2"}/>
+                        <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"px-0 lg:px-2"}/>
                     </Slider>
                 </section>
             </main>

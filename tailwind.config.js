@@ -20,7 +20,12 @@ module.exports = {
       backgroundImage: {
         main: "url('/public/backgrounds/logo_picture.png')",
         section: "url('/public/backgrounds/section_picture.png')",
-        article: "url('/public/backgrounds/article_picture.png')"
+        article: "url('/public/backgrounds/article_picture.png')",
+        testDrive: "url('/public/backgrounds/testdrive_picture.png')",
+        testDriveSection: "url('/public/backgrounds/testdrive_section_picture.png')",
+      },
+      backgroundSize: {
+        '150%': '130%'
       },
       colors: {
         border: "hsl(var(--border))",
