@@ -83,7 +83,7 @@ export const Home = React.memo(() => {
                         </h1>
                     </div>
                     <div className={"button shrink self"}>
-                        <Link to={"/testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>New sl3 features</Link>
+                        <Link to={"/testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Get your Manta</Link>
                     </div>
                 </section>
                 <section className={"flex flex-col items-center"}>
