@@ -83,7 +83,7 @@ export const Home = React.memo(() => {
                         </h1>
                     </div>
                     <div className={"button shrink self"}>
-                        <Link to={"/testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Get your Manta</Link>
+                        <Link to={"/testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Get your Manta5</Link>
                     </div>
                 </section>
                 <section className={"flex flex-col items-center"}>
@@ -232,7 +232,7 @@ export const Home = React.memo(() => {
                                     <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
                                         Hydrofoiler sl3 pro
                                     </span>
-                                    <Link to={"/buy"} className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                    <Link to={"/buy"} className={"text-[12px] lg:text-lg font-semibold bg-red-600 py-5 px-8 text-white"}>
                                         Buy your Manta5 in Thailand
                                     </Link>
                                 </div>
