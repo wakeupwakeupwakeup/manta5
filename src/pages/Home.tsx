@@ -241,7 +241,7 @@ export const Home = React.memo(() => {
                     </div>
                 </section>
                 <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"}>
-                        <div className={"flex flex-col gap-5 max-w-2xl"}>
+                        <div className={"flex flex-col gap-1 lg:gap-5 max-w-2xl"}>
                             <Slide triggerOnce={true}>
                                 <span className={"subtitle"}>
                                     Test-Ride and trainings
