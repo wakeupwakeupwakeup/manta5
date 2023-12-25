@@ -83,7 +83,7 @@ export const Home = React.memo(() => {
                         </h1>
                     </div>
                     <div className={"button shrink self"}>
-                        <Link to={"/testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Get your Manta5</Link>
+                        <a href={"#testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Get your Manta5</a>
                     </div>
                 </section>
                 <section className={"flex flex-col items-center"}>
@@ -240,7 +240,7 @@ export const Home = React.memo(() => {
                         </div>
                     </div>
                 </section>
-                <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"}>
+                <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"} id={"testdrive"}>
                         <div className={"flex flex-col gap-1 lg:gap-5 max-w-2xl"}>
                             <Slide triggerOnce={true}>
                                 <span className={"subtitle"}>
