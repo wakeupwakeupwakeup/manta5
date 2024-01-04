@@ -7,8 +7,6 @@ const schema = yup.object().shape({
     lastName: yup.string().required('Last name is required'),
     phoneNumber: yup.string().required('Phone number is required'),
     email: yup.string().email('Invalid email').required('Email is required'),
-    date: yup.date().required('Date is required'),
-    time: yup.string().required('Time is required'),
 })
 
 const inputs = {
@@ -32,16 +30,6 @@ const inputs = {
         index: "email",
         type: "email"
     },
-    date: {
-        label: "Date",
-        index: "date",
-        type: "date"
-    },
-    time: {
-        label: "Time",
-        index: "time",
-        type: "time"
-    }
 }
 
 interface IInputsProps {
@@ -58,7 +46,7 @@ interface IInputsProps {
 function Inputs({fields, control}: IInputsProps) {
     console.log(fields)
     return (
-        <div className={"grid grid-cols-2 gap-5 mb-8"}>
+        <div className={"grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-5 mb-2 lg:mb-8"}>
             {
                 Object.keys(fields).map((fieldName) => (
                     <div key={fieldName}>
@@ -69,7 +57,7 @@ function Inputs({fields, control}: IInputsProps) {
                                 <input
                                     placeholder={fields[fieldName].label}
                                     {...field}
-                                    className={"p-4 border w-full text-lg"}
+                                    className={"text-[12px] p-2 lg:p-4 border w-full lg:text-lg"}
                                     type={fields[fieldName].type}
                                 />}
                         />
@@ -80,29 +68,25 @@ function Inputs({fields, control}: IInputsProps) {
     )
 }
 
-export function Form() {
+export function ContactForm() {
     const { control} = useForm({
         resolver: yupResolver(schema),
     })
 
-    // const onSubmit = (data) => {
-    //     console.log(data);
-    //     // Добавьте здесь логику для отправки данных
-    // }
-
     return (
         <form
             // onSubmit={handleSubmit(onSubmit)}
+            className={"max-w-[544px] mx-auto"}
         >
             <div>
-                <Inputs fields={inputs} control={control} />
+                <Inputs fields={inputs} control={control}/>
                 <button
                     type={"submit"}
-                    className={"w-full text-white bg-red-600 py-6"}
+                    className={"text-[12px] w-full text-white bg-red-600 py-2 lg:text-xl lg:py-6"}
                 >
-                    Let’s try Manta5
+                    Send
                 </button>
             </div>
         </form>
-    )
+    );
 }

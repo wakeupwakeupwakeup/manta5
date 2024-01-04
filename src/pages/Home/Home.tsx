@@ -1,67 +1,88 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Layout from "@/layouts/Layout.tsx";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import {Link} from "react-router-dom";
 import ImageGallery from "react-image-gallery"
 import { Slide, Fade } from "react-awesome-reveal";
 import {Title} from "@/components/Title/Title.tsx";
+import axios from "axios";
 
-const sliderSettings = {
-    className: "center",
-    centerMode: true,
-    dots: true,
-    arrows: false,
-    infinite: true,
-    slide: 'img',
-    autoplay: true,
-    variableWidth: true,
-    slidesToShow: 1,
-    adaptiveHeight: true,
-    speed: 1000,
-    cssEase: "linear",
-    responsive: [
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 1,
-                centerMode: false, /* set centerMode to false to show complete slide instead of 3 */
-                slidesToScroll: 1
-            }
-        }
-    ]
-}
+// const sliderSettings = {
+//     className: "center",
+//     centerMode: true,
+//     dots: true,
+//     arrows: false,
+//     infinite: true,
+//     slide: 'img',
+//     autoplay: true,
+//     variableWidth: true,
+//     slidesToShow: 1,
+//     adaptiveHeight: true,
+//     speed: 1000,
+//     cssEase: "linear",
+//     responsive: [
+//         {
+//             breakpoint: 768,
+//             settings: {
+//                 slidesToShow: 1,
+//                 centerMode: false, /* set centerMode to false to show complete slide instead of 3 */
+//                 slidesToScroll: 1
+//             }
+//         }
+//     ]
+// }
 
-const images = [
+const gallery2 = [
     {
-        original: "photos/Home/HOME_design_gallery_export_MAIN.jpg",
-        thumbnail: "photos/Home/HOME_design_gallery_export_MAIN.jpg",
+        original: "photos/photo_1.jpg",
+        thumbnail: "photos/photo_1.jpg",
     },
     {
-        original: "photos/Home/HOME_design_gallery_export_1.jpg",
-        thumbnail: "photos/Home/HOME_design_gallery_export_1.jpg"
+        original: "photos/photo_2.jpg",
+        thumbnail: "photos/photo_2.jpg",
     },
     {
-        original: "photos/Home/HOME_design_gallery_export_2.jpg",
-        thumbnail: "photos/Home/HOME_design_gallery_export_2.jpg",
+        original: "photos/photo_3.jpg",
+        thumbnail: "photos/photo_3.jpg",
     },
-    {
-        original: "photos/Home/HOME_design_gallery_export_3.jpg",
-        thumbnail: "photos/Home/HOME_design_gallery_export_3.jpg",
-    },
-    {
-        original: "photos/Home/HOME_design_gallery_export_4.jpg",
-        thumbnail: "photos/Home/HOME_design_gallery_export_4.jpg",
-    },
-    {
-        original: "photos/Home/HOME_design_gallery_export_5.jpg",
-        thumbnail: "photos/Home/HOME_design_gallery_export_5.jpg",
-    }
 ]
 
 
+
+
 export const Home = React.memo(() => {
+    const [data, setData] = useState([])
+    const [photos, setPhotos] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await axios.get(import.meta.env.VITE_API_URL+"/about-gallery?populate=*", {
+                    headers: {
+                        Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
+                    }
+                })
+                console.log(res)
+                setData(res.data.data.attributes.photos.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchData()
+    }, []);
+
+    useEffect(() => {
+        if (data.length > 0) {
+            const formattedData = data.map((item) => ({
+                original: import.meta.env.VITE_UPLOAD_URL + item.attributes.url,
+                thumbnail: import.meta.env.VITE_UPLOAD_URL + item.attributes.url
+            }))
+
+            setPhotos(formattedData)
+        }
+    }, [data]);
     // const headerRef = useRef(null)
     // const [headerHeight, setHeaderHeight] = useState(0)
     //
@@ -75,22 +96,27 @@ export const Home = React.memo(() => {
     return (
         <Layout>
             <main>
-                <section className={"flex flex-col justify-end items-center bg-main bg-cover bg-center lg:justify-between lg:bg-150% lg:bg-[0%_25%] h-[calc(100vh-78px)] bg-no-repeat text-white pb-28"}>
-                    <div className={"hidden lg:flex self-start lg:w-2/3 justify-center lg:justify-start h-full w-full pt-80 lg:pt-48 text-center"}>
-                        <h1>
-                            <span className={"text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[128px] 2xl: uppercase"}>WaterWay</span> <br/>
-                            <span className={"text-[12px] sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-medium text-red-500 uppercase"}>official dealer Manta5 in Thailand</span>
-                        </h1>
+                <section className={"flex flex-col justify-end items-center bg-main bg-cover bg-center lg:bg-150% lg:bg-[0%_25%] h-[calc(100vh-78px)] bg-no-repeat text-white pb-28"}>
+                    <div className={"hidden xl:flex items-center h-full w-full text-center"}>
+                        <Fade triggerOnce={true} >
+                            <h1>
+                                <span
+                                    className={"text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[128px] 2xl: uppercase"}>WaterWay</span>
+                                <br/>
+                                <span
+                                    className={"text-[12px] sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-medium text-red-500 uppercase"}>official dealer Manta5 in Thailand</span>
+                            </h1>
+                        </Fade>
                     </div>
                     <div className={"button shrink self"}>
-                        <a href={"#testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Get your Manta5</a>
+                        <a href={"#testdrive"} className={"bg-red-600 uppercase py-5 px-8"}>Try your Manta5</a>
                     </div>
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content flex flex-col"}>
                         <Title title={"What is Manta5?"} subtitle={"Our history"} />
                         <div className={"flex flex-col gap-9 mb-12 lg:mb-20 lg:gap-14 text-center"}>
-                            <Slide triggerOnce={true} cascade={true} damping={0.3}>
+                            <Slide triggerOnce={true}>
                                 <p>
                                     Manta5 exists because of cycling enthusiast and water lover Guy Howard-Willis.
                                     A tinkerer and entrepreneur at heart, Guy’s passion for the outdoors led him to
@@ -123,7 +149,7 @@ export const Home = React.memo(() => {
                     </div>
                     <div>
                         <ImageGallery
-                            items={images}
+                            items={photos}
                             autoPlay={true}
                             showNav={false}
                             showFullscreenButton={false}
@@ -134,8 +160,8 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center bg-[#212121] text-white"}>
                     <div className={"content"}>
-                        <Title title={"What is the uniqueness?"} subtitle={"Our advantages"} />
-                        <div className={"grid grid-cols-1 gap-y-3 lg:grid-cols-2 grid-rows-2 max-w-[1376px] lg:gap-y-12 gap-x-52"}>
+                        <Title title={"What is the uniqueness?"} subtitle={"Our advantages"} unmark={true}/>
+                        <div className={"grid grid-cols-1 grid-rows-2 gap-10 lg:grid-cols-2"}>
                             <div>
                                 <Slide triggerOnce={true}>
                                     <Fade triggerOnce={true}>
@@ -209,8 +235,8 @@ export const Home = React.memo(() => {
                 </section>
                 <section className={"flex flex-col items-center"}>
                     <div className={"content"}>
-                        <Title title={"Buy manta5"} subtitle={"Your waterway"} />
-                        <div className={"flex flex-col gap-8 lg:flex-row"}>
+                        <Title title={"Buy manta5"} subtitle={"Your waterway"} unmark={true} />
+                        <div className={"flex flex-col gap-16 lg:flex-row"}>
                             <Slide triggerOnce={true}>
                                 <div className={"flex flex-col gap-4 items-center"}>
                                     <div>
@@ -243,31 +269,36 @@ export const Home = React.memo(() => {
                 <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"} id={"testdrive"}>
                         <div className={"flex flex-col gap-1 lg:gap-5 max-w-2xl"}>
                             <Slide triggerOnce={true}>
-                                <span className={"subtitle"}>
+                                <span className={"subtitle tracking-[4px]"}>
                                     Test-Ride and trainings
                                 </span>
-                                <h2 className={""}>
+                                <h2 className={"mb-0"}>
                                     Join Our Training and <br/>Test-Drive Experience!
                                 </h2>
-                                <p>
+                                <p className={"font-normal"}>
                                     Are you ready to dive into the future of water sports? WaterWay invites you to join our
                                     exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
                                     Experience the unique sensation of gliding over water with these cutting-edge machines.
                                 </p>
                                 <div className={"mt-8"}>
-                                    <a className={"font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                    <a className={"text-[9px] font-semibold bg-red-600 py-3 px-8 text-white"}>
                                         Try it yourself!
                                     </a>
                                 </div>
                             </Slide>
                         </div>
                 </section>
-                <section className={"overflow-x-hidden py-40 px-0"}>
-                    <Slider {...sliderSettings}>
-                        <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"px-0 lg:px-2"}/>
-                        <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"px-0 lg:px-2"}/>
-                        <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"px-0 lg:px-2"}/>
-                    </Slider>
+                <section className={"overflow-x-hidden px-0 py-8 lg:py-40 "}>
+                    <div>
+                        <ImageGallery
+                            items={gallery2}
+                            autoPlay={true}
+                            showNav={false}
+                            showFullscreenButton={false}
+                            showPlayButton={false}
+                            lazyLoad={true}
+                        />
+                    </div>
                 </section>
             </main>
         </Layout>

@@ -10,9 +10,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "react-image-gallery/styles/css/image-gallery.css"
 
-import {Home} from "@/pages/Home.tsx";
-import {BuyPage} from "@/pages/Buy.tsx";
-import {TestDrive} from "@/pages/TestDrive.tsx";
+import {Home} from "@/pages/Home/Home.tsx";
+import {BuyPage} from "@/pages/Buy/Buy.tsx";
+import {TestDrive} from "@/pages/TestDrive/TestDrive.tsx";
 
 const router = createBrowserRouter([
     {

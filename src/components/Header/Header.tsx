@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className={"bg-neutral-900 px-4 py-2 lg:py-3 lg:px-40 "}>
+        <div className={"bg-neutral-900 px-4 py-2 lg:py-3 lg:px-40 w-full "}>
             <div className={"flex justify-between items-center"}>
                 <div className={""}>
                     <Link to={"/"}>
@@ -16,9 +16,6 @@ const Header = () => {
                     </div>
                     <div>
                         <Link to={"/testdrive"} className={"uppercase"}>Test-ride and trainings</Link>
-                    </div>
-                    <div>
-                        <a className={"uppercase"} href={"#"}>About</a>
                     </div>
                 </div>
             </div>
