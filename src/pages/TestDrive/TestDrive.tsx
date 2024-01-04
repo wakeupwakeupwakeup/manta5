@@ -54,7 +54,7 @@ export function TestDrive() {
                                 </p>
                             </div>
                         </Slide>
-                        <video muted={true} autoPlay={true} loop onCanPlayThrough={() => setVideoLoaded(true)}>
+                        <video muted={true} autoPlay={true} loop>
                             <source
                                 src={"videos/Y2meta.app-Birdwatching on a Hydrofoil SL3 _  Manta5 Hydrofoil Bikes-(1080p50).mp4"}/>
                         </video>
