@@ -1,4 +1,14 @@
 {
+  "builds": [
+    {
+      "src": "api/manta5_strapi",
+      "use": "@vercel/node"
+    },
+    {
+      "src": ".",
+      "use": "@vercel/static"
+    }
+  ],
   "rewrites": [
     {"source": "/(.*)", "destination": "/"}
   ]
