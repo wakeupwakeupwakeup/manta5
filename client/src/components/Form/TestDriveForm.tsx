@@ -56,7 +56,6 @@ interface IInputsProps {
 }
 
 function Inputs({fields, control}: IInputsProps) {
-    console.log(fields)
     return (
         <div className={"grid grid-cols-2 gap-5 mb-8"}>
             {
@@ -69,7 +68,7 @@ function Inputs({fields, control}: IInputsProps) {
                                 <input
                                     placeholder={fields[fieldName].label}
                                     {...field}
-                                    className={"p-4 border w-full text-lg"}
+                                    className={"p-4 border w-full text-[12px] lg:text-lg"}
                                     type={fields[fieldName].type}
                                 />}
                         />

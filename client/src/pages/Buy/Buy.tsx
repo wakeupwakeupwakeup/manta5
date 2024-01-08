@@ -6,9 +6,10 @@ import {Fade, Slide} from "react-awesome-reveal";
 import {CAccordion} from "@/components/Accordion/CAccordion.tsx";
 import {IAccordion} from "@/components/Accordion/CAccordion.tsx"
 import axios from "axios";
+import { Products } from "@/components/Products/Products";
 
 export function BuyPage() {
-    const [data, setData] = useState<IAccordion[]>([])
+    const [faq, setFaq] = useState<IAccordion[]>([])
 
     useEffect(() => {
         async function fetchData() {
@@ -18,8 +19,7 @@ export function BuyPage() {
                         Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
                     }
                 })
-                console.log(res.data.data)
-                setData(res.data.data)
+                setFaq(res.data.data)
             } catch (e) {
                 console.log(e)
             }
@@ -27,7 +27,7 @@ export function BuyPage() {
 
         fetchData()
     }, []);
-
+    
     return (
         <Layout>
             <>
@@ -38,65 +38,68 @@ export function BuyPage() {
                     </video>
                 </section>
                 <section className={"flex flex-col gap-10 lg:gap-32"}>
-                    <Slide triggerOnce={true}>
-                        <div className={"flex flex-col gap-7 lg:flex-row lg:gap-10"}>
-                            <h3 className={"text-black font-bold text-center lg:hidden"}><span
-                                className={"text-red-600"}>Manta5 SL3</span> -
-                                The Gateway to Hydrofoiling
-                            </h3>
-                            <div className={"lg:w-1/3"}>
-                                <img src={"/products/HYDROFOILER_SL3.png"} alt={"HYDROFOILER SL3"}/>
-                            </div>
-                            <div className={"flex flex-col gap-2 lg:gap-8 lg:w-2/3"}>
-                                <h3 className={"hidden lg:block text-black font-bold"}><span
-                                    className={"text-red-600"}>Manta5 SL3</span> -
-                                    The Gateway to Hydrofoiling
-                                </h3>
-                                <ul className={"text-[9px] font-medium list-disc leading-5 lg:text-xl lg:leading-8"}>
-                                    <li>Chassis: Orca White, offering a sleek and modern design.</li>
-                                    <li>Battery: Light Hydropack 600, providing efficient power.</li>
-                                    <li>Rear Foil: 'Learner' Fixed Chord 2.0 (FC2), suitable for all riders</li>
-                                    <li>Ideal For: Everyone, from beginners to seasoned riders.</li>
-                                    <li>Feature: A lightweight battery for ease of use and transportation.</li>
-                                </ul>
-                                <p className={"font-semibold"}>
-                                    A perfect blend of style and function, the Manta5 SL3 offers an accessible entry
-                                    into
-                                    the
-                                    world of hydrofoil biking.
-                                </p>
-                            </div>
-                        </div>
-                    </Slide>
-                    <Slide triggerOnce={true} direction={"right"}>
-                        <div className={"flex flex-col gap-7 lg:flex-row lg:gap-10"}>
-                            <h3 className={"text-black font-bold text-center lg:hidden"}><span
-                                className={"text-red-600"}>Manta5 SL3 Pro</span> - Advanced Hydrofoiling
-                            </h3>
-                            <div className={"lg:w-1/3"}>
-                                <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>
-                            </div>
-                            <div className={"flex flex-col gap-2 lg:gap-8 lg:w-2/3"}>
-                                <h3 className={"hidden lg:block text-black font-bold"}><span
-                                    className={"text-red-600"}>Manta5 SL3 Pro</span> - Advanced Hydrofoiling</h3>
-                                <ul className={"text-[9px] font-medium list-disc leading-5 lg:text-xl lg:leading-8"}>
-                                    <li>Chassis: Sharkskin, designed for performance.</li>
-                                    <li>Battery: Long-range Hydropack 1000, for extended adventures.</li>
-                                    <li>Rear Foil: Both Fixed Chord 2.0 (FC2) and ‘Super Lightweight’ High
-                                        Efficiency(HE2),
-                                        catering to confident starters and experts.
-                                    </li>
-                                    <li>Ideal For: Enthusiasts seeking longer range and advanced features.</li>
-                                    <li>Feature: Offers the longest range among hydrofoil bikes.</li>
-                                </ul>
-                                <p className={"font-semibold"}>
-                                    The Manta5 SL3 Pro is engineered for those who demand the best in hydrofoiling,
-                                    combining
-                                    advanced features with exceptional range.
-                                </p>
-                            </div>
-                        </div>
-                    </Slide>
+                    <Products />
+                    {/*<Slide triggerOnce={true}>*/}
+                    {/*    <div className={"flex flex-col gap-7 lg:flex-row lg:gap-10"}>*/}
+                    {/*        <h3 className={"text-black font-bold text-center lg:hidden"}><span*/}
+                    {/*            className={"text-red-600"}>Manta5 SL3</span> -*/}
+                    {/*            The Gateway to Hydrofoiling*/}
+                    {/*        </h3>*/}
+                    {/*        <div className={"flex flex-col text-center lg:w-1/3"}>*/}
+                    {/*            <img src={"/products/HYDROFOILER_SL3.png"} alt={"HYDROFOILER SL3"}/>*/}
+                    {/*            <span className={"text-2xl font-semibold"}>99,999 THB</span>*/}
+                    {/*        </div>*/}
+                    {/*        <div className={"flex flex-col gap-2 lg:gap-8 lg:w-2/3"}>*/}
+                    {/*            <h3 className={"hidden lg:block text-black font-bold"}><span*/}
+                    {/*                className={"text-red-600"}>Manta5 SL3</span> -*/}
+                    {/*                The Gateway to Hydrofoiling*/}
+                    {/*            </h3>*/}
+                    {/*            <ul className={"text-[9px] font-medium list-disc leading-5 lg:text-xl lg:leading-8"}>*/}
+                    {/*                <li>Chassis: Orca White, offering a sleek and modern design.</li>*/}
+                    {/*                <li>Battery: Light Hydropack 600, providing efficient power.</li>*/}
+                    {/*                <li>Rear Foil: 'Learner' Fixed Chord 2.0 (FC2), suitable for all riders</li>*/}
+                    {/*                <li>Ideal For: Everyone, from beginners to seasoned riders.</li>*/}
+                    {/*                <li>Feature: A lightweight battery for ease of use and transportation.</li>*/}
+                    {/*            </ul>*/}
+                    {/*            <p className={"font-semibold"}>*/}
+                    {/*                A perfect blend of style and function, the Manta5 SL3 offers an accessible entry*/}
+                    {/*                into*/}
+                    {/*                the*/}
+                    {/*                world of hydrofoil biking.*/}
+                    {/*            </p>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</Slide>*/}
+                    {/*<Slide triggerOnce={true} direction={"right"}>*/}
+                    {/*    <div className={"flex flex-col gap-7 lg:flex-row lg:gap-10"}>*/}
+                    {/*        <h3 className={"text-black font-bold text-center lg:hidden"}><span*/}
+                    {/*            className={"text-red-600"}>Manta5 SL3 Pro</span> - Advanced Hydrofoiling*/}
+                    {/*        </h3>*/}
+                    {/*        <div className={"flex flex-col text-center lg:w-1/3"}>*/}
+                    {/*            <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>*/}
+                    {/*            <span className={"text-2xl font-semibold"}>99,999 THB</span>*/}
+                    {/*        </div>*/}
+                    {/*        <div className={"flex flex-col gap-2 lg:gap-8 lg:w-2/3"}>*/}
+                    {/*            <h3 className={"hidden lg:block text-black font-bold"}><span*/}
+                    {/*                className={"text-red-600"}>Manta5 SL3 Pro</span> - Advanced Hydrofoiling</h3>*/}
+                    {/*            <ul className={"text-[9px] font-medium list-disc leading-5 lg:text-xl lg:leading-8"}>*/}
+                    {/*                <li>Chassis: Sharkskin, designed for performance.</li>*/}
+                    {/*                <li>Battery: Long-range Hydropack 1000, for extended adventures.</li>*/}
+                    {/*                <li>Rear Foil: Both Fixed Chord 2.0 (FC2) and ‘Super Lightweight’ High*/}
+                    {/*                    Efficiency(HE2),*/}
+                    {/*                    catering to confident starters and experts.*/}
+                    {/*                </li>*/}
+                    {/*                <li>Ideal For: Enthusiasts seeking longer range and advanced features.</li>*/}
+                    {/*                <li>Feature: Offers the longest range among hydrofoil bikes.</li>*/}
+                    {/*            </ul>*/}
+                    {/*            <p className={"font-semibold"}>*/}
+                    {/*                The Manta5 SL3 Pro is engineered for those who demand the best in hydrofoiling,*/}
+                    {/*                combining*/}
+                    {/*                advanced features with exceptional range.*/}
+                    {/*            </p>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</Slide>*/}
                 </section>
                 <section className={"flex flex-col gap-16 bg-article bg-[63%_0%] lg:bg-center bg-cover text-white"}>
                     <div className={"flex flex-col max-w-[1170px]"}>
@@ -277,7 +280,7 @@ export function BuyPage() {
                     <ContactForm/>
                 </section>
                 <section>
-                    <CAccordion content={data} />
+                    <CAccordion data={faq} />
                 </section>
             </>
         </Layout>

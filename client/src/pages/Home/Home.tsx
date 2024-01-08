@@ -8,64 +8,38 @@ import ImageGallery from "react-image-gallery"
 import { Slide, Fade } from "react-awesome-reveal";
 import {Title} from "@/components/Title/Title.tsx";
 import axios from "axios";
+import qs from "qs"
 
-// const sliderSettings = {
-//     className: "center",
-//     centerMode: true,
-//     dots: true,
-//     arrows: false,
-//     infinite: true,
-//     slide: 'img',
-//     autoplay: true,
-//     variableWidth: true,
-//     slidesToShow: 1,
-//     adaptiveHeight: true,
-//     speed: 1000,
-//     cssEase: "linear",
-//     responsive: [
-//         {
-//             breakpoint: 768,
-//             settings: {
-//                 slidesToShow: 1,
-//                 centerMode: false, /* set centerMode to false to show complete slide instead of 3 */
-//                 slidesToScroll: 1
-//             }
-//         }
-//     ]
-// }
-
-const gallery2 = [
+const query = qs.stringify(
     {
-        original: "photos/photo_1.jpg",
-        thumbnail: "photos/photo_1.jpg",
+        filters: {
+            id: {
+                $in: [1, 2]
+            }
+        },
+        populate: "*"
     },
     {
-        original: "photos/photo_2.jpg",
-        thumbnail: "photos/photo_2.jpg",
-    },
-    {
-        original: "photos/photo_3.jpg",
-        thumbnail: "photos/photo_3.jpg",
-    },
-]
-
-
-
+        encodeValuesOnly: true
+    }
+)
 
 export const Home = React.memo(() => {
     const [data, setData] = useState([])
-    const [photos, setPhotos] = useState([])
+    const [topGallery, setTopGallery] = useState([])
+    const [bottomGallery, setBottomGallery] = useState([])
+
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(import.meta.env.VITE_API_URL+"/about-gallery?populate=*", {
+                const res = await axios.get(import.meta.env.VITE_API_URL+`/photo-galleries?${query}`, {
                     headers: {
                         Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
                     }
                 })
                 console.log(res)
-                setData(res.data.data.attributes.photos.data)
+                setData(res.data.data)
             } catch (e) {
                 console.log(e)
             }
@@ -74,25 +48,20 @@ export const Home = React.memo(() => {
     }, []);
 
     useEffect(() => {
-        if (data.length > 0) {
-            const formattedData = data.map((item) => ({
-                original: import.meta.env.VITE_UPLOAD_URL + item.attributes.url,
-                thumbnail: import.meta.env.VITE_UPLOAD_URL + item.attributes.url
-            }))
+        if (data.length > 1) {
+            const formattedData = data.map((gallery) => (
+                gallery.attributes.photos.data.map((photo) => ({
+                    original: import.meta.env.VITE_UPLOAD_URL + photo.attributes.url,
+                    thumbnail: import.meta.env.VITE_UPLOAD_URL + photo.attributes.url,
+                }))
+            ));
 
-            setPhotos(formattedData)
+            // Используйте formattedData[0] для первого элемента и formattedData[1] для второго
+            setTopGallery(formattedData[0]);
+            setBottomGallery(formattedData[1]); // Замените "AnotherGallery" на имя вашего второго массива, если это необходимо
         }
     }, [data]);
-    // const headerRef = useRef(null)
-    // const [headerHeight, setHeaderHeight] = useState(0)
-    //
-    // useEffect(() => {
-    //     const updateElementHeight() {
-    //         if (headerRef.current) {
-    //             const height = headerRef.current.getBoundingClientRect()
-    //         }
-    //     }
-    // }, []);
+
     return (
         <Layout>
             <main>
@@ -149,7 +118,7 @@ export const Home = React.memo(() => {
                     </div>
                     <div>
                         <ImageGallery
-                            items={photos}
+                            items={topGallery}
                             autoPlay={true}
                             showNav={false}
                             showFullscreenButton={false}
@@ -281,9 +250,9 @@ export const Home = React.memo(() => {
                                     Experience the unique sensation of gliding over water with these cutting-edge machines.
                                 </p>
                                 <div className={"mt-8"}>
-                                    <a className={"text-[9px] font-semibold bg-red-600 py-3 px-8 text-white"}>
+                                    <Link to={"/testdrive"} className={"text-[9px] lg:text-base font-semibold bg-red-600 py-3 px-8 text-white"}>
                                         Try it yourself!
-                                    </a>
+                                    </Link>
                                 </div>
                             </Slide>
                         </div>
@@ -291,7 +260,7 @@ export const Home = React.memo(() => {
                 <section className={"overflow-x-hidden px-0 py-8 lg:py-40 "}>
                     <div>
                         <ImageGallery
-                            items={gallery2}
+                            items={bottomGallery}
                             autoPlay={true}
                             showNav={false}
                             showFullscreenButton={false}

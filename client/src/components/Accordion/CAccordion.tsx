@@ -25,17 +25,17 @@ export interface IAccordion {
 }
 
 interface IComponentProps {
-    content: IAccordion[]
+    data: IAccordion[]
 }
 
 
 
-export function CAccordion({ content }: IComponentProps) {
+export function CAccordion({ data }: IComponentProps) {
     const [expandedItems, setExpandedItems] = useState<ID[]>([])
     return (
         <div className={"flex flex-col gap-16"}>
             {
-                content.map((accordion) => (
+                data && data.map((accordion) => (
                     <div key={accordion.id}>
                         <h2 className={"text-red-600"}>{accordion.attributes.Title}</h2>
                         <Accordion

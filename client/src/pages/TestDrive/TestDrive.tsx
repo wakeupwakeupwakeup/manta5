@@ -62,7 +62,7 @@ export function TestDrive() {
                 </section>
                 <section className={"bg-testDriveSection bg-cover text-white py-8 lg:py-40"}>
                     <div className={"flex flex-col items-center text-center gap-16"}>
-                        <h2 className={"mb-9"}>
+                        <h2 className={"mb-0 lg:mb-9"}>
                             Why Join Us?
                         </h2>
                         <div className={"grid grid-cols-1 lg:grid-cols-3 gap-14"}>
@@ -116,7 +116,7 @@ export function TestDrive() {
                 {/*<section>*/}
                 {/*    <CGoogleMap />*/}
                 {/*</section>*/}
-                <section className={"bg-[#F8F9FA]"}>
+                <section className={"flex justify-between items-center gap-16 bg-[#F8F9FA]"}>
                     <div className={"max-w-[544px]"}>
                         <p className={"mb-10 font-medium"}>
                             <span className={"text-red-500 font-medium"}>Book Your Spot Today! </span>
@@ -125,6 +125,36 @@ export function TestDrive() {
                             up for an experience like no other!
                         </p>
                         <TestDriveForm />
+                    </div>
+                    <div className={"flex flex-col gap-4"}>
+                        <div>
+                            <h3>Submit Your Inquiry and Embark on a Unique Water Adventure!</h3>
+                            <p>
+                                Upon receiving your inquiry, our friendly and experienced manager will contact you to
+                                finalize all details and schedule a convenient time for you. We are committed to
+                                ensuring
+                                a memorable and comfortable experience with Manta5 - the electric hydrofoil bikes.
+                            </p>
+                        </div>
+                        <div>
+                            <h4>Rental Rates:</h4>
+                            <ul className={"list-disc"}>
+                                <li>15 minutes: 2000 THB</li>
+                                <li>30 minutes: 2500 THB</li>
+                                <li>1 hour: 3000 THB</li>
+                                <li>Full-day rental with an instructor: Price upon request.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Included in Your Rental:</h4>
+                            <ul className={"list-disc"}>
+                                <li>Choose between Manta5 SL3 or SL3 Pro models</li>
+                                <li>Safety life jackets</li>
+                                <li>Insurance for worry-free enjoyment</li>
+                                <li>A professional instructor for optimal safety and experience</li>
+                            </ul>
+                        </div>
+                        <p>Start your Manta5 adventure now!</p>
                     </div>
                 </section>
                 <section className={"px-0"}>

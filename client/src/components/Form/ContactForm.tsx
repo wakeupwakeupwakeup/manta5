@@ -44,7 +44,6 @@ interface IInputsProps {
 }
 
 function Inputs({fields, control}: IInputsProps) {
-    console.log(fields)
     return (
         <div className={"grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-5 mb-2 lg:mb-8"}>
             {
