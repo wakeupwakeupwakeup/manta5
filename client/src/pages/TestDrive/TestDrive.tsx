@@ -1,36 +1,62 @@
 import Layout from "@/layouts/Layout.tsx";
 import {Title} from "@/components/Title/Title.tsx";
 import {TestDriveForm} from "@/components/Form/TestDriveForm.tsx";
-import Slider from "react-slick";
 import {Slide} from "react-awesome-reveal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
-const sliderSettings = {
-    className: "center",
-    centerMode: true,
-    dots: true,
-    arrows: false,
-    infinite: true,
-    slide: 'img',
-    autoplay: true,
-    variableWidth: true,
-    centerPadding: '20px',
-    slidesToShow: 1,
-    adaptiveHeight: true,
-    speed: 1000,
-    cssEase: "linear",
-    responsive: [
+interface IPricing {
+    Title: string,
+    Description: string,
+    SmallText: string,
+    RentalRates: [
         {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 1,
-                dots: false
-            }
+            children: [
+                {
+                    children: [
+                        {
+                            text: string
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    Includings: [
+        {
+            children: [
+                {
+                    children: [
+                        {
+                            text: string
+                        }
+                    ]
+                }
+            ]
         }
     ]
-}
 
+}
 export function TestDrive() {
+    const [pricing, setPricing] = useState<IPricing>({})
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await axios.get(import.meta.env.VITE_API_URL+"/pricing?populate=*", {
+                    headers: {
+                        Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
+                    }
+                })
+                console.log(res.data.data.attributes)
+                setPricing(res.data.data.attributes)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchData()
+    }, []);
+
     return (
         <Layout>
             <>
@@ -116,7 +142,7 @@ export function TestDrive() {
                 {/*<section>*/}
                 {/*    <CGoogleMap />*/}
                 {/*</section>*/}
-                <section className={"flex justify-between items-center gap-16 bg-[#F8F9FA]"}>
+                <section className={"flex flex-col md:flex-row justify-between items-center gap-16 bg-[#F8F9FA]"}>
                     <div className={"max-w-[544px]"}>
                         <p className={"mb-10 font-medium"}>
                             <span className={"text-red-500 font-medium"}>Book Your Spot Today! </span>
@@ -128,42 +154,34 @@ export function TestDrive() {
                     </div>
                     <div className={"flex flex-col gap-4"}>
                         <div>
-                            <h3>Submit Your Inquiry and Embark on a Unique Water Adventure!</h3>
-                            <p>
-                                Upon receiving your inquiry, our friendly and experienced manager will contact you to
-                                finalize all details and schedule a convenient time for you. We are committed to
-                                ensuring
-                                a memorable and comfortable experience with Manta5 - the electric hydrofoil bikes.
-                            </p>
+                            <h3>{pricing.Title}</h3>
+                            <p>{pricing.Description}</p>
                         </div>
                         <div>
                             <h4>Rental Rates:</h4>
                             <ul className={"list-disc"}>
-                                <li>15 minutes: 2000 THB</li>
-                                <li>30 minutes: 2500 THB</li>
-                                <li>1 hour: 3000 THB</li>
-                                <li>Full-day rental with an instructor: Price upon request.</li>
+                                {
+                                    pricing.RentalRates && pricing.RentalRates[0].children.map((item) => (
+                                        <li>{item.children[0].text}</li>
+                                    ))
+                                }
                             </ul>
                         </div>
                         <div>
                             <h4>Included in Your Rental:</h4>
                             <ul className={"list-disc"}>
-                                <li>Choose between Manta5 SL3 or SL3 Pro models</li>
-                                <li>Safety life jackets</li>
-                                <li>Insurance for worry-free enjoyment</li>
-                                <li>A professional instructor for optimal safety and experience</li>
+                                {
+                                    pricing.RentalRates && pricing.Includings[0].children.map((item) => (
+                                        <li>{item.children[0].text}</li>
+                                        ))
+                                }
                             </ul>
                         </div>
-                        <p>Start your Manta5 adventure now!</p>
+                        <p>{pricing.SmallText}</p>
                     </div>
                 </section>
                 <section className={"px-0"}>
                     <Title title={"Photos from our trainings"} subtitle={""}/>
-                    <Slider {...sliderSettings}>
-                        <img src={"/photos/photo_1.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
-                        <img src={"/photos/photo_2.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
-                        <img src={"/photos/photo_3.jpg"} alt={"photo"} className={"inline-block px-0 lg:px-2"}/>
-                    </Slider>
                 </section>
             </>
         </Layout>
