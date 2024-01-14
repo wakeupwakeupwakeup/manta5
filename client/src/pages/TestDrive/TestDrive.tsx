@@ -38,7 +38,7 @@ interface IPricing {
 
 }
 export function TestDrive() {
-    const [pricing, setPricing] = useState<IPricing>({})
+    const [pricing, setPricing] = useState<IPricing>()
 
     useEffect(() => {
         async function fetchData() {
