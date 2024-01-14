@@ -177,7 +177,7 @@ export function TestDrive() {
                                 }
                             </ul>
                         </div>
-                        <p>{pricing.SmallText}</p>
+                        <p>{pricing && pricing.SmallText}</p>
                     </div>
                 </section>
                 <section className={"px-0"}>
