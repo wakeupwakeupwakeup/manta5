@@ -154,8 +154,8 @@ export function TestDrive() {
                     </div>
                     <div className={"flex flex-col gap-4"}>
                         <div>
-                            <h3>{pricing.Title}</h3>
-                            <p>{pricing.Description}</p>
+                            <h3>{pricing && pricing.Title}</h3>
+                            <p>{pricing && pricing.Description}</p>
                         </div>
                         <div>
                             <h4>Rental Rates:</h4>
