@@ -153,31 +153,31 @@ export function TestDrive() {
                         <TestDriveForm />
                     </div>
                     <div className={"flex flex-col gap-4"}>
-                        <div>
-                            <h3>{pricing && pricing.title}</h3>
-                            <p>{pricing && pricing.text}</p>
-                        </div>
-                        <div>
-                            <h4>Rental Rates:</h4>
-                            <ul className={"list-disc"}>
-                                {
-                                    pricing.rentalRates && pricing.rentalRates[0].children.map((item) => (
-                                        <li>{item.children[0].text}</li>
-                                    ))
-                                }
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>Included in Your Rental:</h4>
-                            <ul className={"list-disc"}>
-                                {
-                                    pricing.rentalRates && pricing.includings[0].children.map((item) => (
-                                        <li>{item.children[0].text}</li>
-                                        ))
-                                }
-                            </ul>
-                        </div>
-                        <p>{pricing.tagline && pricing.tagline}</p>
+                        {/*<div>*/}
+                        {/*    <h3>{pricing && pricing.title}</h3>*/}
+                        {/*    <p>{pricing && pricing.text}</p>*/}
+                        {/*</div>*/}
+                        {/*<div>*/}
+                        {/*    <h4>Rental Rates:</h4>*/}
+                        {/*    <ul className={"list-disc"}>*/}
+                        {/*        {*/}
+                        {/*            pricing.rentalRates && pricing.rentalRates[0].children.map((item) => (*/}
+                        {/*                <li>{item.children[0].text}</li>*/}
+                        {/*            ))*/}
+                        {/*        }*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
+                        {/*<div>*/}
+                        {/*    <h4>Included in Your Rental:</h4>*/}
+                        {/*    <ul className={"list-disc"}>*/}
+                        {/*        {*/}
+                        {/*            pricing.rentalRates && pricing.includings[0].children.map((item) => (*/}
+                        {/*                <li>{item.children[0].text}</li>*/}
+                        {/*                ))*/}
+                        {/*        }*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
+                        {/*<p>{pricing.tagline && pricing.tagline}</p>*/}
                     </div>
                 </section>
                 <section className={"px-0"}>
