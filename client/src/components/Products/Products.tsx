@@ -74,7 +74,7 @@ export function Products() {
                             alt={product.attributes.name}
                           />
                           <span className={"text-2xl font-semibold"}>
-                            {product.attributes.price} {product.attributes.currency}
+                            {product.attributes.price.toLocaleString()} {product.attributes.currency}
                           </span>
                         </div>
                         <div className={"flex flex-col gap-2 lg:gap-8 lg:w-2/3"}>
@@ -89,8 +89,7 @@ export function Products() {
                               "text-[9px] font-medium list-disc leading-5 lg:text-xl lg:leading-8"
                             }
                           >
-                            {product.attributes.features[0].children.map(
-                              (feature, index) => (
+                            {product.attributes.features[0].children.map((feature, index) => (
                                 <li key={index}>{feature.children[0].text}</li>
                               )
                             )}

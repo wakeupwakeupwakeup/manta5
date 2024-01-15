@@ -25,9 +25,6 @@ const Footer = () => {
                     <p className={"text-[9px] lg:text-[13px] leading-5"}>
                         The Manta5 brand is owned by Manta5 LP
                     </p>
-                    <p className={"text-[9px] lg:text-[13px] leading-5"}>
-                        WaterWay brand is owned by WaterWay Co., LTD.
-                    </p>
                 </div>
                 <div className={"hidden lg:flex flex-col justify-between text-white nav"}>
                     <a className={"uppercase"} href={"#"}>Buy mantas</a>

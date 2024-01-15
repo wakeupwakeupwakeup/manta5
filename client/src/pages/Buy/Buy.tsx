@@ -19,6 +19,7 @@ export function BuyPage() {
                         Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
                     }
                 })
+                console.log(res)
                 setFaq(res.data.data)
             } catch (e) {
                 console.log(e)
@@ -109,7 +110,7 @@ export function BuyPage() {
                             </h2>
                         </Fade>
                         <div className={"flex flex-col gap-4 font-semibold"}>
-                            <Slide triggerOnce={true}>
+                            <Fade triggerOnce={true}>
                                 <p>
                                     The Manta5 SL3 reimagines the water experience with its cutting-edge hydrofoil
                                     technology.
@@ -159,7 +160,7 @@ export function BuyPage() {
                                     meets
                                     the tides, and every ride is a discovery.
                                 </p>
-                            </Slide>
+                            </Fade>
                         </div>
                     </div>
                 </section>
