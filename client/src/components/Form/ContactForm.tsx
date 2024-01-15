@@ -77,7 +77,7 @@ export function ContactForm() {
     const onSubmit = useCallback(async (data: object) => {
         try {
             const formData = JSON.stringify(data)
-            const res = await axios.post(import.meta.env.VITE_API_URL+`email/send`, {formData}, {
+            const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {formData}, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
