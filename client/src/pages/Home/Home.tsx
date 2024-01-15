@@ -10,36 +10,51 @@ import {Title} from "@/components/Title/Title.tsx";
 import axios from "axios";
 import qs from "qs"
 
-const query = qs.stringify(
+const galleryQuery = qs.stringify(
     {
-        filters: {
-            id: {
-                $in: [1, 2]
-            }
-        },
-        populate: "*"
+        populate: ['bottomGallery, topGallery']
     },
     {
         encodeValuesOnly: true
     }
 )
 
+interface IFormatedPhoto {
+    original: string,
+    thumbnail: string
+}
+
+interface IPhotoAttributes {
+    attributes: {
+        url: string
+    }
+}
+
+interface IGalleryData {
+    topGallery: {
+        data: IPhotoAttributes[]
+    };
+    bottomGallery: {
+        data: IPhotoAttributes[]
+    };
+}
+
 export const Home = React.memo(() => {
-    const [data, setData] = useState([])
-    const [topGallery, setTopGallery] = useState([])
-    const [bottomGallery, setBottomGallery] = useState([])
+    const [data, setData] = useState<IGalleryData>(null)
+    const [products, setProducts] = useState(null)
+    const [topGallery, setTopGallery] = useState<IFormatedPhoto[]>([])
+    const [bottomGallery, setBottomGallery] = useState<IFormatedPhoto[]>([])
 
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(import.meta.env.VITE_API_URL+`/photo-galleries?${query}`, {
+                const res = await axios.get(import.meta.env.VITE_API_URL+`/main-gallery?${galleryQuery}`, {
                     headers: {
                         Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
                     }
                 })
-                console.log(res)
-                setData(res.data.data)
+                setData(res.data.data.attributes)
             } catch (e) {
                 console.log(e)
             }
@@ -48,17 +63,37 @@ export const Home = React.memo(() => {
     }, []);
 
     useEffect(() => {
-        if (data.length > 1) {
-            const formattedData = data.map((gallery) => (
-                gallery.attributes.photos.data.map((photo) => ({
-                    original: import.meta.env.VITE_UPLOAD_URL + photo.attributes.url,
-                    thumbnail: import.meta.env.VITE_UPLOAD_URL + photo.attributes.url,
-                }))
-            ));
+        async function fetchData() {
+            try {
+                const res = await axios.get(import.meta.env.VITE_API_URL+`/products?populate=*`, {
+                    headers: {
+                        Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
+                    }
+                })
+                console.log(res)
+                setProducts(res.data.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchData()
+    }, []);
+
+    useEffect(() => {
+        if (data) {
+            const formattedTopGallery = data.topGallery.data.map((photo) => ({
+                original: photo.attributes.url,
+                thumbnail: photo.attributes.url,
+            }));
+
+            const formattedBottomGallery = data.bottomGallery.data.map((photo) => ({
+                original: photo.attributes.url,
+                thumbnail: photo.attributes.url,
+            }));
 
             // Используйте formattedData[0] для первого элемента и formattedData[1] для второго
-            setTopGallery(formattedData[0]);
-            setBottomGallery(formattedData[1]); // Замените "AnotherGallery" на имя вашего второго массива, если это необходимо
+            setTopGallery(formattedTopGallery);
+            setBottomGallery(formattedBottomGallery); // Замените "AnotherGallery" на имя вашего второго массива, если это необходимо
         }
     }, [data]);
 
@@ -206,32 +241,23 @@ export const Home = React.memo(() => {
                     <div className={"content"}>
                         <Title title={"Buy manta5"} subtitle={"Your waterway"} unmark={true} />
                         <div className={"flex flex-col gap-16 lg:flex-row"}>
-                            <Slide triggerOnce={true}>
-                                <div className={"flex flex-col gap-4 items-center"}>
-                                    <div>
-                                    <img src={"/products/HYDROFOILER_SL3.png"} alt={"HYDROFOILER SL3"}/>
-                                    </div>
-                                    <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
-                                        Hydrofoiler sl3
-                                    </span>
-                                    <Link to={"/buy"} className={"text-[12px] lg:text-lg font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                        Buy your Manta5 in Thailand
-                                    </Link>
-                                </div>
-                            </Slide>
-                            <Slide triggerOnce={true} direction={"right"}>
-                                <div className={"flex flex-col gap-4 items-center"}>
-                                    <div>
-                                        <img src={"/products/HYDROFOILER_SL3_PRO.png"} alt={"HYDROFOILER SL3 PRO"}/>
-                                    </div>
-                                    <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
-                                        Hydrofoiler sl3 pro
-                                    </span>
-                                    <Link to={"/buy"} className={"text-[12px] lg:text-lg font-semibold bg-red-600 py-5 px-8 text-white"}>
-                                        Buy your Manta5 in Thailand
-                                    </Link>
-                                </div>
-                            </Slide>
+                            {
+                                products && products.map((item, index) => (
+                                    <Slide key={index} triggerOnce={true} direction={index === 1 ? "right" : "left"}>
+                                        <div className={"flex flex-col gap-4 items-center"}>
+                                            <div>
+                                                <img src={item.attributes.photo.data.attributes.url} alt={item.attributes.name}/>
+                                            </div>
+                                            <span className={"uppercase font-bold text-[15px] lg:text-3xl"}>
+                                                {item.attributes.name}
+                                            </span>
+                                            <Link to={"/buy"} className={"text-[12px] lg:text-lg font-semibold bg-red-600 py-5 px-8 text-white"}>
+                                                Buy your Manta5 in Thailand
+                                            </Link>
+                                        </div>
+                                    </Slide>
+                                ))
+                            }
                         </div>
                     </div>
                 </section>

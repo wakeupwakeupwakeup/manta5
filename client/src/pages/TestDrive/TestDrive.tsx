@@ -6,10 +6,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 interface IPricing {
-    Title: string,
-    Description: string,
-    SmallText: string,
-    RentalRates: [
+    title: string,
+    text: string,
+    tagline: string,
+    rentalRates: [
         {
             children: [
                 {
@@ -22,7 +22,7 @@ interface IPricing {
             ]
         }
     ],
-    Includings: [
+    includings: [
         {
             children: [
                 {
@@ -43,7 +43,7 @@ export function TestDrive() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await axios.get(import.meta.env.VITE_API_URL+"/pricing?populate=*", {
+                const res = await axios.get(import.meta.env.VITE_API_URL+"/test-drive-information?populate=*", {
                     headers: {
                         Authorization: "bearer" + import.meta.env.VITE_API_TOKEN,
                     }
@@ -154,14 +154,14 @@ export function TestDrive() {
                     </div>
                     <div className={"flex flex-col gap-4"}>
                         <div>
-                            <h3>{pricing && pricing.Title}</h3>
-                            <p>{pricing && pricing.Description}</p>
+                            <h3>{pricing && pricing.title}</h3>
+                            <p>{pricing && pricing.text}</p>
                         </div>
                         <div>
                             <h4>Rental Rates:</h4>
                             <ul className={"list-disc"}>
                                 {
-                                    pricing.RentalRates && pricing.RentalRates[0].children.map((item) => (
+                                    pricing.rentalRates && pricing.rentalRates[0].children.map((item) => (
                                         <li>{item.children[0].text}</li>
                                     ))
                                 }
@@ -171,13 +171,13 @@ export function TestDrive() {
                             <h4>Included in Your Rental:</h4>
                             <ul className={"list-disc"}>
                                 {
-                                    pricing.RentalRates && pricing.Includings[0].children.map((item) => (
+                                    pricing.rentalRates && pricing.includings[0].children.map((item) => (
                                         <li>{item.children[0].text}</li>
                                         ))
                                 }
                             </ul>
                         </div>
-                        <p>{pricing && pricing.SmallText}</p>
+                        <p>{pricing.tagline && pricing.tagline}</p>
                     </div>
                 </section>
                 <section className={"px-0"}>
