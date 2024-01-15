@@ -11,16 +11,16 @@ import {Fade} from "react-awesome-reveal";
 
 
 interface IQuestion {
-    id: string;
-    Question: string;
-    Answer: string;
+    id: number;
+    question: string;
+    answer: string;
 }
 
 export interface IAccordion {
     id: string;
     attributes: {
-        Title: string;
-        FAQ_Item: IQuestion[];
+        title: string;
+        question: IQuestion[];
     };
 }
 
@@ -37,14 +37,14 @@ export function CAccordion({ data }: IComponentProps) {
             {
                 data && data.map((accordion) => (
                     <div key={accordion.id}>
-                        <h2 className={"text-red-600"}>{accordion.attributes.Title}</h2>
+                        <h2 className={"text-red-600"}>{accordion.attributes.title}</h2>
                         <Accordion
                             allowZeroExpanded={true}
                             allowMultipleExpanded={true}
                             onChange={(expandedItems) => setExpandedItems(expandedItems)}
                         >
                             {
-                                accordion.attributes.FAQ_Item.map((item) => (
+                                accordion.attributes.question.map((item) => (
                                     <AccordionItem
                                         key={item.id}
                                         uuid={item.id}
@@ -62,13 +62,13 @@ export function CAccordion({ data }: IComponentProps) {
                                                     }
                                                 </div>
                                                 <h4 className={"mb-0"}>
-                                                    {item.Question}
+                                                    {item.question}
                                                 </h4>
                                             </AccordionItemButton>
                                         </AccordionItemHeading>
                                         <AccordionItemPanel className={"ml-12"}>
                                             <Fade triggerOnce={true}>
-                                                <p className={"text-base text-gray-500"}>{item.Answer}</p>
+                                                <p className={"text-base text-gray-500"}>{item.answer}</p>
                                             </Fade>
                                         </AccordionItemPanel>
                                     </AccordionItem>
