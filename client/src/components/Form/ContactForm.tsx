@@ -1,6 +1,8 @@
 import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import {useCallback} from "react";
+import axios from "axios";
 
 const schema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
@@ -68,13 +70,27 @@ function Inputs({fields, control}: IInputsProps) {
 }
 
 export function ContactForm() {
-    const { control} = useForm({
+    const { control, handleSubmit} = useForm({
         resolver: yupResolver(schema),
     })
 
+    const onSubmit = useCallback(async (data: object) => {
+        try {
+            const formData = JSON.stringify(data)
+            const res = await axios.post(import.meta.env.VITE_API_URL+`email/send`, {formData}, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    }, [])
+
     return (
         <form
-            // onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)}
             className={"max-w-[544px] mx-auto"}
         >
             <div>
