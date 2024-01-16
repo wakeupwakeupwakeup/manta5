@@ -1,7 +1,7 @@
 import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import {useCallback, useRef} from "react";
+import React, {useCallback, useRef, useState} from "react";
 import axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha"
 
@@ -75,31 +75,58 @@ export function ContactForm() {
         resolver: yupResolver(schema),
     })
 
+    // reCAPTCHA
+    const [captchaRespond, setCaptchaRespond] = useState<boolean>(false)
     const captchaRef = useRef(null)
+    const captchaVerify = useCallback(async () => {
+        const token = captchaRef.current.getValue()
+        captchaRef.current.reset()
 
-    const onSubmit = useCallback(async (data: object) => {
         try {
-            const formData = JSON.stringify(data)
-            console.log(formData)
-            const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {formData}, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            const res = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${import.meta.env.VITE_SECRET_KEY}&response=${token}`)
             console.log(res)
+            console.log(token)
+            if (res.data.success) {
+                setCaptchaRespond(true)
+            }
         } catch (error) {
-            console.log(error)
+            console.error(error)
+            console.log(token)
         }
     }, [])
 
+
+    const onSubmit = useCallback(async (data: object) => {
+        await captchaVerify()
+        if (captchaRespond) {
+            try {
+                console.log(data)
+                const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {data}, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                console.log(res)
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            console.log("ERROR")
+        }
+    }, [captchaVerify, captchaRespond])
+
     return (
         <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={(e) => {
+                e.preventDefault()
+                handleSubmit(onSubmit)(e)
+            }}
             className={"max-w-[544px] mx-auto"}
         >
             <div>
                 <Inputs fields={inputs} control={control}/>
                 <button
+                    disabled={captchaRespond}
                     type={"submit"}
                     className={"text-[12px] w-full text-white bg-red-600 py-2 lg:text-xl lg:py-6"}
                 >
