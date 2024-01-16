@@ -1,8 +1,9 @@
 import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import {useCallback} from "react";
+import {useCallback, useRef} from "react";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha"
 
 const schema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
@@ -74,6 +75,8 @@ export function ContactForm() {
         resolver: yupResolver(schema),
     })
 
+    const captchaRef = useRef(null)
+
     const onSubmit = useCallback(async (data: object) => {
         try {
             const formData = JSON.stringify(data)
@@ -102,6 +105,10 @@ export function ContactForm() {
                 >
                     Send
                 </button>
+                <ReCAPTCHA
+                    sitekey={import.meta.env.VITE_SITE_KEY}
+                    ref={captchaRef}
+                />
             </div>
         </form>
     );
