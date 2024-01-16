@@ -142,7 +142,7 @@ export function TestDrive() {
                 {/*<section>*/}
                 {/*    <CGoogleMap />*/}
                 {/*</section>*/}
-                <section className={"flex flex-col md:flex-row justify-between items-center gap-16 bg-[#F8F9FA]"}>
+                <section className={"flex flex-col-reverse xl:flex-row justify-between items-center gap-16 bg-[#F8F9FA]"}>
                     <div className={"max-w-[544px]"}>
                         <p className={"mb-10 font-medium"}>
                             <span className={"text-red-500 font-medium"}>Book Your Spot Today! </span>
