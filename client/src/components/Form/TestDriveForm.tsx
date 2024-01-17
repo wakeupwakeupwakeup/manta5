@@ -1,6 +1,9 @@
 import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import {useCallback, useEffect, useState} from "react";
+import axios from "axios";
+import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 
 const schema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
@@ -80,18 +83,71 @@ function Inputs({fields, control}: IInputsProps) {
 }
 
 export function TestDriveForm() {
-    const { control} = useForm({
+    const { control, handleSubmit} = useForm({
         resolver: yupResolver(schema),
     })
 
-    // const onSubmit = (data) => {
-    //     console.log(data);
-    //     // Добавьте здесь логику для отправки данных
-    // }
+    // reCAPTCHA
+    const { executeRecaptcha } = useGoogleReCaptcha()
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+    const handleReCaptchaVerify = useCallback(async () => {
+        if (!executeRecaptcha) {
+            console.log('Execute recaptcha not yet available')
+            return null
+        }
+
+        const token = await executeRecaptcha('submit')
+        setCaptchaToken(token)
+    }, [executeRecaptcha]);
+
+    useEffect(() => {
+        handleReCaptchaVerify()
+    }, [handleReCaptchaVerify])
+
+    const onSubmit = useCallback(async (data: FieldValues) => {
+        try {
+            if (captchaToken !== null) {
+                console.log(data)
+                const html = `
+                        <body>
+                            <h1>${data.firstName} ${data.lastName} оставил заявку на аренду Manta5</h1>
+                            <ul>
+                                <li>Дата: ${data.date}</li>
+                                <li>Время: ${data.time}</li>
+                            </ul>
+                            <h2>Контакты:</h2>
+                            <ul>
+                                <li>Телефон: ${data.phoneNumber}</li>
+                                <li>Почта: ${data.email}</li>
+                            </ul>
+                        </body>
+                    `
+                const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {
+                    html: html,
+                    subject: "Rental Manta5",
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: "bearer" + import.meta.env.VITE_API_TOKEN
+                    }
+                })
+                    .then(() => {
+
+                    })
+            } else {
+                console.log("NO TOKEN")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }, [captchaToken])
 
     return (
         <form
-            // onSubmit={handleSubmit(onSubmit)}
+            onSubmit={(e) => {
+                e.preventDefault()
+                handleSubmit(onSubmit)(e)
+            }}
         >
             <div>
                 <Inputs fields={inputs} control={control} />

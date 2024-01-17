@@ -91,7 +91,7 @@ export function ContactForm() {
 
     useEffect(() => {
         handleReCaptchaVerify()
-    }, [handleReCaptchaVerify]);
+    }, [handleReCaptchaVerify])
 
     const onSubmit = useCallback(async (data: FieldValues) => {
             try {
