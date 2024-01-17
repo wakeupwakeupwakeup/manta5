@@ -35,6 +35,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <GoogleReCaptchaProvider
         reCaptchaKey={import.meta.env.VITE_SITE_KEY}
+        container={{
+            element: "html",
+            parameters: {
+                badge: 'bottomleft'
+            }
+        }}
     >
         <RouterProvider router={router} />
     </GoogleReCaptchaProvider>

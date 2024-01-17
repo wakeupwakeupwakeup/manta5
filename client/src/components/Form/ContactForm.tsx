@@ -98,7 +98,8 @@ export function ContactForm() {
                     console.log(data)
                     const html = `
                         <body>
-                            <h3>Контакты:</h3>
+                            <h1>${data.firstName} ${data.lastName} оставил заявку на аренду Manta5</h1>
+                            <h2>Контакты:</h2>
                             <ul>
                                 <li>Телефон: ${data.phoneNumber}</li>
                                 <li>Почта: ${data.email}</li>
@@ -108,7 +109,6 @@ export function ContactForm() {
                     const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {
                         html: html,
                         subject: "Buy Manta5",
-                        text: `${data.firstName} ${data.lastName} оставил заявку на аренду Manta5`,
                     }, {
                         headers: {
                             'Content-Type': 'application/json',
