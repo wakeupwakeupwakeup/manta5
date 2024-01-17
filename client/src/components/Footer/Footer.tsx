@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -27,9 +28,8 @@ const Footer = () => {
                     </p>
                 </div>
                 <div className={"hidden lg:flex flex-col justify-between text-white nav"}>
-                    <a className={"uppercase"} href={"#"}>Buy mantas</a>
-                    <a className={"uppercase"} href={"#"}>Test-ride and trainings</a>
-                    <a className={"uppercase"} href={"#"}>About</a>
+                    <Link to={"/buy"} className={"uppercase"}>Buy mantas</Link>
+                    <Link to={"/testdrive"} className={"uppercase"}>Test-ride and trainings</Link>
                 </div>
             </div>
         </div>
