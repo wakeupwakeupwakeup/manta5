@@ -1,9 +1,9 @@
 import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
-import {GoogleReCaptcha, useGoogleReCaptcha} from 'react-google-recaptcha-v3'
+import {useGoogleReCaptcha} from 'react-google-recaptcha-v3'
 
 const schema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
@@ -98,13 +98,17 @@ export function ContactForm() {
                     console.log(data)
                     const html = `
                         <body>
-                            <h1>Test</h1>
-                            {{ data }}
+                            <h3>Контакты:</h3>
+                            <ul>
+                                <li>Телефон: ${data.phoneNumber}</li>
+                                <li>Почта: ${data.email}</li>
+                            </ul>
                         </body>
                     `
                     const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {
-                        from: data.email,
                         html: html,
+                        subject: "Buy Manta5",
+                        text: `${data.firstName} ${data.lastName} оставил заявку на аренду Manta5`,
                     }, {
                         headers: {
                             'Content-Type': 'application/json',
