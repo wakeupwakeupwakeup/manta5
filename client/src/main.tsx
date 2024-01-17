@@ -14,6 +14,8 @@ import {Home} from "@/pages/Home/Home.tsx";
 import {BuyPage} from "@/pages/Buy/Buy.tsx";
 import {TestDrive} from "@/pages/TestDrive/TestDrive.tsx";
 
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <GoogleReCaptchaProvider
+        reCaptchaKey={import.meta.env.VITE_SITE_KEY}
+    >
+        <RouterProvider router={router} />
+    </GoogleReCaptchaProvider>
   </React.StrictMode>,
 )

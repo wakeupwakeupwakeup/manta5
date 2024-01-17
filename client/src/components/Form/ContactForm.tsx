@@ -1,9 +1,9 @@
 import {useForm, Controller, FieldValues, Control} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import React, {useCallback, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha"
+import {GoogleReCaptcha, useGoogleReCaptcha} from 'react-google-recaptcha-v3'
 
 const schema = yup.object().shape({
     firstName: yup.string().required('First name is required'),
@@ -76,44 +76,47 @@ export function ContactForm() {
     })
 
     // reCAPTCHA
-    const [captchaRespond, setCaptchaRespond] = useState<boolean>(false)
-    const captchaRef = useRef(null)
-    const captchaVerify = useCallback(async () => {
-        const token = captchaRef.current.getValue()
-        captchaRef.current.reset()
-
-        try {
-            const res = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${import.meta.env.VITE_SECRET_KEY}&response=${token}`)
-            console.log(res)
-            console.log(token)
-            if (res.data.success) {
-                setCaptchaRespond(true)
-            }
-        } catch (error) {
-            console.error(error)
-            console.log(token)
+    const { executeRecaptcha } = useGoogleReCaptcha()
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+    const handleReCaptchaVerify = useCallback(async () => {
+        if (!executeRecaptcha) {
+            console.log('Execute recaptcha not yet available')
+            return null
         }
-    }, [])
 
+        const token = await executeRecaptcha('submit')
+        setCaptchaToken(token)
+    }, [executeRecaptcha]);
+
+    useEffect(() => {
+        handleReCaptchaVerify()
+    }, [handleReCaptchaVerify]);
 
     const onSubmit = useCallback(async (data: object) => {
-        await captchaVerify()
-        if (captchaRespond) {
             try {
-                console.log(data)
-                const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {data}, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                console.log(res)
+                if (captchaToken !== null) {
+                    console.log(data)
+                    const html = `
+                        <body>
+                            <h1>Test</h1>
+                            {{ data }}
+                        </body>
+                    `
+                    const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {
+                        html: html,
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: "bearer" + import.meta.env.VITE_API_TOKEN
+                        }
+                    })
+                } else {
+                    console.log("NO TOKEN")
+                }
             } catch (error) {
                 console.log(error)
             }
-        } else {
-            console.log("ERROR")
-        }
-    }, [captchaVerify, captchaRespond])
+    }, [captchaToken])
 
     return (
         <form
@@ -126,16 +129,16 @@ export function ContactForm() {
             <div>
                 <Inputs fields={inputs} control={control}/>
                 <button
-                    disabled={captchaRespond}
                     type={"submit"}
                     className={"text-[12px] w-full text-white bg-red-600 py-2 lg:text-xl lg:py-6"}
                 >
                     Send
                 </button>
-                <ReCAPTCHA
-                    sitekey={import.meta.env.VITE_SITE_KEY}
-                    ref={captchaRef}
-                />
+                {/*<ReCAPTCHA*/}
+                {/*    sitekey={import.meta.env.VITE_SITE_KEY}*/}
+                {/*    // ref={captchaRef}*/}
+                {/*    onChange={handleCaptcha}*/}
+                {/*/>*/}
             </div>
         </form>
     );
