@@ -92,7 +92,7 @@ export function ContactForm() {
         handleReCaptchaVerify()
     }, [handleReCaptchaVerify]);
 
-    const onSubmit = useCallback(async (data: object) => {
+    const onSubmit = useCallback(async (data: FieldValues) => {
             try {
                 if (captchaToken !== null) {
                     console.log(data)
@@ -103,6 +103,7 @@ export function ContactForm() {
                         </body>
                     `
                     const res = await axios.post(import.meta.env.VITE_API_URL+`/email/send`, {
+                        from: data.email,
                         html: html,
                     }, {
                         headers: {
