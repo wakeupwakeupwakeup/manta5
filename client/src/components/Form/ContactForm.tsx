@@ -71,6 +71,7 @@ function Inputs({fields, control}: IInputsProps) {
 }
 
 export function ContactForm() {
+    const [successfulSubmit, setSuccessfulSubmit] = useState<boolean>(false)
     const { control, handleSubmit} = useForm({
         resolver: yupResolver(schema),
     })
@@ -115,6 +116,9 @@ export function ContactForm() {
                             Authorization: "bearer" + import.meta.env.VITE_API_TOKEN
                         }
                     })
+                        .then(() => {
+                            setSuccessfulSubmit(true)
+                        })
                 } else {
                     console.log("NO TOKEN")
                 }
@@ -124,27 +128,31 @@ export function ContactForm() {
     }, [captchaToken])
 
     return (
-        <form
-            onSubmit={(e) => {
-                e.preventDefault()
-                handleSubmit(onSubmit)(e)
-            }}
-            className={"max-w-[544px] mx-auto"}
-        >
-            <div>
-                <Inputs fields={inputs} control={control}/>
-                <button
-                    type={"submit"}
-                    className={"text-[12px] w-full text-white bg-red-600 py-2 lg:text-xl lg:py-6"}
-                >
-                    Send
-                </button>
-                {/*<ReCAPTCHA*/}
-                {/*    sitekey={import.meta.env.VITE_SITE_KEY}*/}
-                {/*    // ref={captchaRef}*/}
-                {/*    onChange={handleCaptcha}*/}
-                {/*/>*/}
-            </div>
-        </form>
+        successfulSubmit ? (
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault()
+                    handleSubmit(onSubmit)(e)
+                }}
+                className={"max-w-[544px] mx-auto"}
+            >
+                <div>
+                    <Inputs fields={inputs} control={control}/>
+                    <button
+                        type={"submit"}
+                        className={"text-[12px] w-full text-white bg-red-600 py-2 lg:text-xl lg:py-6"}
+                    >
+                        Send
+                    </button>
+                    {/*<ReCAPTCHA*/}
+                    {/*    sitekey={import.meta.env.VITE_SITE_KEY}*/}
+                    {/*    // ref={captchaRef}*/}
+                    {/*    onChange={handleCaptcha}*/}
+                    {/*/>*/}
+                </div>
+            </form>
+        ) : (
+            <h2>Successful submit!</h2>
+        )
     );
 }
