@@ -129,6 +129,8 @@ export function ContactForm() {
 
     return (
         successfulSubmit ? (
+            <h2 className={"mx-auto"}>Successful submit!</h2>
+        ) : (
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
@@ -151,8 +153,6 @@ export function ContactForm() {
                     {/*/>*/}
                 </div>
             </form>
-        ) : (
-            <h2>Successful submit!</h2>
         )
-    );
+    )
 }
