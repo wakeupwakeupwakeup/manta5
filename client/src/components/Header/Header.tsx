@@ -15,8 +15,8 @@ const Header = () => {
                         </Link>
                     </div>
                     <div className={"hidden lg:flex gap-24 text-white nav"}>
-                        <Link to={"/buy"} className={"uppercase"}>Buy mantas</Link>
-                        <Link to={"/testdrive"} className={"uppercase"}>Test-ride and trainings</Link>
+                        <Link to={"/buy"} className={"uppercase link_animation"}>Buy mantas</Link>
+                        <Link to={"/testdrive"} className={"uppercase link_animation"}>Test-ride and trainings</Link>
                     </div>
                     <div className={"md:hidden"} onClick={()=> setIsNavOpen(true)}>
                         <img src={"/icons/menu.svg"} alt={"Menu"}/>

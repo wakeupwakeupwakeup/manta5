@@ -132,6 +132,39 @@
   .button {
     transform: skew(-20deg, 0)
   }
+
+  .link_animation {
+    background-image: linear-gradient(
+            to right,
+            red,
+            red 50%,
+            #fff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .link_animation:before {
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+  }
+
+  .link_animation:hover {
+    background-position: 0;
+  }
+
+  .link_animation:hover::before {
+    width: 100%;
+  }
 }
 
 .image-gallery {
