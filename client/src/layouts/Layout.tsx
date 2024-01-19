@@ -9,10 +9,11 @@ type Props = {
 const Layout = ({children}: Props) => {
     return (
         <>
-            <Header />
+            <Header/>
             {children}
-            <Footer />
-            <Analytics />
+            <div className="elfsight-app-2a29a2fe-2584-4c65-8893-7e251ed4bf54" data-elfsight-app-lazy></div>
+            <Footer/>
+            <Analytics/>
         </>
     );
 };
