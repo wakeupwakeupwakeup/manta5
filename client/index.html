@@ -30,16 +30,12 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="src/main.tsx"></script>
     <div id="fb-root"></div>
-    <div id="fb-customer-chat" class="fb-customerchat"></div>
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "176228705582006");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+    <div class="elfsight-app-2a29a2fe-2584-4c65-8893-7e251ed4bf54" data-elfsight-app-lazy></div>
   </body>
 </html>

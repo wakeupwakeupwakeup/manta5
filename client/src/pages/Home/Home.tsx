@@ -262,26 +262,26 @@ export const Home = React.memo(() => {
                     </div>
                 </section>
                 <section className={"flex justify-start bg-section bg-cover bg-center bg-no-repeat text-white py-32"} id={"testdrive"}>
+                    <Slide triggerOnce={true}>
                         <div className={"flex flex-col gap-1 lg:gap-5 max-w-2xl"}>
-                            <Slide triggerOnce={true}>
-                                <span className={"subtitle tracking-[4px]"}>
-                                    Test-Ride and trainings
-                                </span>
-                                <h2 className={"mb-0"}>
-                                    Join Our Training and <br/>Test-Drive Experience!
-                                </h2>
-                                <p className={"font-normal"}>
-                                    Are you ready to dive into the future of water sports? WaterWay invites you to join our
-                                    exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
-                                    Experience the unique sensation of gliding over water with these cutting-edge machines.
-                                </p>
-                                <div className={"mt-8"}>
-                                    <Link to={"/testdrive"} className={"text-[9px] lg:text-base font-semibold bg-red-600 py-3 px-8 text-white"}>
-                                        Try it yourself!
-                                    </Link>
-                                </div>
-                            </Slide>
+                            <span className={"subtitle tracking-[4px]"}>
+                                Test-Ride and trainings
+                            </span>
+                            <h2 className={"mb-0"}>
+                                Join Our Training and <br/>Test-Drive Experience!
+                            </h2>
+                            <p className={"font-normal"}>
+                                Are you ready to dive into the future of water sports? WaterWay invites you to join our
+                                exclusive training sessions and test-drive the revolutionary Manta5 hydrofoil bikes.
+                                Experience the unique sensation of gliding over water with these cutting-edge machines.
+                            </p>
+                            <div className={"mt-8"}>
+                                <Link to={"/testdrive"} className={"text-[9px] lg:text-base font-semibold bg-red-600 py-3 px-8 text-white"}>
+                                    Try it yourself!
+                                </Link>
+                            </div>
                         </div>
+                    </Slide>
                 </section>
                 <section className={"overflow-x-hidden px-0 py-8 lg:py-40 "}>
                     <div>
