@@ -26,6 +26,9 @@ const Footer = () => {
                     <p className={"text-[9px] lg:text-[13px] leading-5"}>
                         The Manta5 brand is owned by Manta5 LP
                     </p>
+                    <a className={"text-[9px] lg:text-[13px] leading-5"} href={"https://pavlovmkt.online"}>
+                        Site developed by Pavlov Marketing
+                    </a>
                 </div>
                 <div className={"hidden lg:flex flex-col justify-between text-white nav"}>
                     <Link to={"/buy"} className={"uppercase link_animation"}>Buy mantas</Link>
